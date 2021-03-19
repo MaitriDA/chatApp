@@ -4,26 +4,26 @@
     margin-top: 1.25%;
     margin-left: 1.25%;
     border-radius: 10px;
-    background-color:#feefec;
-    border: 1px solid gray;
+    background-color:rgb(248, 248, 248);
+    border: 1px solid rgb(139, 139, 139);
 }
 .contactListHeader{
     display: flex;
-    border: 1px solid gray;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    display: flex;
 }
 .contactListTitle{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 25px;
+    font-size: 35px;
+    color: #0c2637;
 }
 .contactListSearchIcon{
     margin-left: 10px;
-    color: gray;
-    
+    color: #0c2637;
 }
 .contactListSearchBox{
     margin-top: 7px;

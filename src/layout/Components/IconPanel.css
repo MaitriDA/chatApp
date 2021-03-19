@@ -1,0 +1,9 @@
+.mainIconPanel{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    align-items: center;
+    justify-content: space-evenly;
+
+}

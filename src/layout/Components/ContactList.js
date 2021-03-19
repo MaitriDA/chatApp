@@ -5,6 +5,7 @@ import fire from '../../helper/db';
 import './ContactList.css';
 import MyContacts from './MyContacts';
 
+
 //'Constcts' stores the array of contacts(email,name,etc) of the logged in user.
 //'userEmail' is the email of the user who is currently logged in. This email is fetched from the local Storage
 //'setContact' sets the array in the 'Contacts' this is .
@@ -36,14 +37,10 @@ const ContactList=(props)=>{
         <>
        <div className="mainContactList">
            <div className="contactListHeader">
-                <div className="contactListTitle">My Contact</div>
-                <SearchOutlined className="contactListSearchIcon"/>
-            </div>
-            <div className="contactListSearchBox">
-                <input placeholder="Search" typr="text"/>
+                <div className="contactListTitle">Chats</div>
+                <SearchOutlined style={{fontSize:30}}className="contactListSearchIcon"/>
             </div>
             <div className="MyContact">
-                <MyContacts addNewContact/>
                 {Contacts.map(Contact=>(
                     <MyContacts 
                         key={Contact.id}    
