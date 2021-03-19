@@ -1,0 +1,37 @@
+.image{
+    margin-top: 30px;
+    height: 250px;
+    width: 500px;
+}
+.titlegs{
+    height: 100px;
+    width: 800px;
+    display: block;
+    margin:auto;
+    border: 2px solid red;
+
+}
+.textTitle{
+    text-align: center;
+    font-size: 80px;
+    color: #feefec;
+}
+.textMsg{
+    text-align: center;
+    font-size: 30px;
+    color: #feefec;
+}
+.buttonCon{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid red;
+    display: block;
+    margin: auto;
+    justify-content: space-around;
+}
+.GSBtn{
+   all: unset;
+   background-color: #feefec;
+   height: 20px;
+   width: 100px;
+}

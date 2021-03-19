@@ -1,0 +1,34 @@
+.mainChatArea{
+    border: 2px solid red;
+    width: 70%;
+    margin-top: 1.25%;
+    margin-bottom: 1.25%;
+    margin-left: 1.25%;
+}
+.chatAreaHeader{
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+}
+.chatAreaBody{
+    border: 1px solid gray;
+    overflow:scroll;
+    overflow-x: hidden;
+    height: 87%;
+}
+.chatAreaFooter{
+    display: flex;
+    border: 1px solid gray;
+}
+.chatAreaMessages{
+    position: relative;
+    font-size: 16px;
+    padding: 4px;
+    margin: 5px;
+    width: fit-content;
+    border: 1px solid red;
+}
+.chatAreaMessageMy{
+    border: 1px solid black;
+    margin-left: auto;
+}

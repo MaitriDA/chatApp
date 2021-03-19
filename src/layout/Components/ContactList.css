@@ -1,0 +1,52 @@
+.mainContactList{
+    width: 25%;
+    height: 95%;
+    margin-top: 1.25%;
+    margin-left: 1.25%;
+    border-radius: 10px;
+    background-color:#feefec;
+    border: 1px solid gray;
+}
+.contactListHeader{
+    display: flex;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.contactListTitle{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+.contactListSearchIcon{
+    margin-left: 10px;
+    color: gray;
+    
+}
+.contactListSearchBox{
+    margin-top: 7px;
+    height: 30px;
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+.contactListSearchBox > input{
+    border:none;
+    margin-left: 10px;
+    height: 20px;
+}
+.MyContact{
+    height: 85%;
+    flex: 1;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+    

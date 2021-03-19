@@ -1,0 +1,13 @@
+.myContact{
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 0.05px solid rgb(233, 233, 233);
+    align-items: center;
+}
+.myContact:hover{
+    background-color: white;
+}
+.myContactName{
+    margin-left: 10px;
+}
