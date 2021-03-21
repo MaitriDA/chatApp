@@ -4,12 +4,12 @@
 }
 .mainHome{
     background-color: #0c2637;
-    width: 100%;
-    height: 100vh;
+    width: 99.1%;
+    height: 98.2vh;
     border: 1px solid gray;
     padding: 5px;
     display: grid;
-    grid-template-columns: 6% 74% 20%;
+    grid-template-columns: 4% 76% 20%;
     grid-template-rows: 7% 90% 3%;
 }
 
