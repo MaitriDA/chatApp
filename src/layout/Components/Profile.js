@@ -40,12 +40,12 @@ export default function Profile() {
             </LightTooltip>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{width:'fir-content'}}>
           <div className="demo1">
-            <DialogTitle id="form-dialog-title">My Profile</DialogTitle>
+            <DialogTitle id="form-dialog-title">Profile Page</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     <div className="demo">
                         Profile Page content
-                        
+                        content of the profile page
                     </div>
                 </DialogContentText>
             </DialogContent>

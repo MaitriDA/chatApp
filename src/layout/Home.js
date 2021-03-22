@@ -4,7 +4,6 @@ import {AccountCircle} from '@material-ui/icons';
 import './Home.css';
 import fire from '../helper/db';
 import { render } from '@testing-library/react';
-import Practice from './Practice';
 import Header from './Components/Header';
 import IconPanel from './Components/IconPanel';
 import MainArea from './Components/MainArea';

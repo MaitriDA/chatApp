@@ -35,6 +35,7 @@ function ChatArea(){
                 .collection('Chats')
                 .doc(contactEmail)
                 .collection('messages')
+                .orderBy('timestamp')
                 .onSnapshot(snapshot=>(
                     setMessages(snapshot.docs.map(doc=>
                         doc.data()))
@@ -61,6 +62,7 @@ function ChatArea(){
                     message:input,
                     conatct:contactEmail,
                     my:userEmail,
+                    timestamp:new Date(),
                     
                 })
 
@@ -73,6 +75,7 @@ function ChatArea(){
                     message:input,
                     contact:contactEmail,
                     my:userEmail,
+                    timestamp:new Date(),
                     
                 })
 
