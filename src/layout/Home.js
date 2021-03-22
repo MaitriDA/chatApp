@@ -15,7 +15,7 @@ const Home=(props)=>{
     return(
         <div className="home">
         <div className="mainHome">
-       <Header className="Header"/>
+       <Header setUserState={props.setUserState} className="Header"/>
        <IconPanel/>
        <MainArea/>
        <PersonalSpace/>

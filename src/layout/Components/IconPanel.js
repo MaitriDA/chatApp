@@ -8,6 +8,7 @@ import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import Profile from './Profile';
 
 const IconPanel=(props)=>{
     const LightTooltip = withStyles((theme: Theme) => ({
@@ -22,11 +23,8 @@ const IconPanel=(props)=>{
       }))(Tooltip);
     return(
        <div className="mainIconPanel">
-           <LightTooltip title="My Profile" placement="right">
-              <Button>
-                <PersonIcon style={{fontSize:35,color:"white"}}/>
-              </Button>
-            </LightTooltip>
+          <Profile/>
+           
             <LightTooltip title="Add people" placement="right">
               <Button>
                 <MyContacts addNewContact/>
