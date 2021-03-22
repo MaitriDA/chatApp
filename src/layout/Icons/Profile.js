@@ -11,6 +11,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Tooltip from '@material-ui/core/Tooltip';
 import './Profile.css';
 
+
 export default function Profile() {
   const [open, setOpen] = React.useState(false);
 
@@ -44,8 +45,45 @@ export default function Profile() {
             <DialogContent>
                 <DialogContentText>
                     <div className="demo">
-                        Profile Page content
-                        content of the profile page
+                    <div>
+            <div className="card">
+                <img src={Vector1} className="imagels" />
+                <div className="logInSignUp">
+                    <ToastContainer />
+                    <CssBaseline>
+                        <div className="lsTitle">LOGIN</div>
+                            <ValidatorForm
+                                className="ValidationFrom"
+                                >
+                                <TextValidator
+                                    className={classes.textField}
+                                    color="primary"
+                                    variant="outlined"
+                                    margin="normal"
+                                    label="Email"
+                                    
+                                    name="email"
+                                    
+                                    
+                                />
+                                <TextValidator
+                                    className={classes.textField}
+                                    color="primary"
+                                    variant="outlined"
+                                    margin="normal"
+                                    label="Password"
+                                    
+                                />
+                                <br/>
+                                <Link onClick={props.toggle} className={classes.pointer} variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </ValidatorForm>
+                    </CssBaseline>
+                </div>
+            </div>
+        </div>
+
                     </div>
                 </DialogContentText>
             </DialogContent>

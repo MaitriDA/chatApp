@@ -44,7 +44,7 @@ const Header=(props)=>{
                 <div className="title">
                 BAATEIN
                 </div>
-                <div className="title UserName">Welcome {UserName}</div>
+                <div className="title UserName">Hello!! {UserName}</div>
                 <div onClick={handleClose} className="logOut">
                 LogOut
                 </div>

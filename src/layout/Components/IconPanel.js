@@ -8,7 +8,9 @@ import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
-import Profile from './Profile';
+import Profile from '../Icons/Profile';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import ScheduleMessage from '../Icons/ScheduleMessage';
 
 const IconPanel=(props)=>{
     const LightTooltip = withStyles((theme: Theme) => ({
@@ -24,7 +26,7 @@ const IconPanel=(props)=>{
     return(
        <div className="mainIconPanel">
           <Profile/>
-           
+          
             <LightTooltip title="Add people" placement="right">
               <Button>
                 <MyContacts addNewContact/>
@@ -35,11 +37,7 @@ const IconPanel=(props)=>{
                 <MobileScreenShareIcon style={{fontSize:35,color:"white"}}/>
               </Button>
             </LightTooltip>
-            <LightTooltip title="Settings" placement="right">
-              <Button>
-                <Settings style={{fontSize:35,color:"white"}}/>
-              </Button>
-            </LightTooltip>
+            <ScheduleMessage/>
             <LightTooltip title="About Us" placement="right">
               <Button>
                 <InfoRounded style={{fontSize:35,color:"white"}}/>
