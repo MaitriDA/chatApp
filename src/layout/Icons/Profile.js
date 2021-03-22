@@ -40,50 +40,11 @@ export default function Profile() {
               </Button>
             </LightTooltip>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{width:'fir-content'}}>
-          <div className="demo1">
             <DialogTitle id="form-dialog-title">Profile Page</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     <div className="demo">
-                    <div>
-            <div className="card">
-                <img src={Vector1} className="imagels" />
-                <div className="logInSignUp">
-                    <ToastContainer />
-                    <CssBaseline>
-                        <div className="lsTitle">LOGIN</div>
-                            <ValidatorForm
-                                className="ValidationFrom"
-                                >
-                                <TextValidator
-                                    className={classes.textField}
-                                    color="primary"
-                                    variant="outlined"
-                                    margin="normal"
-                                    label="Email"
-                                    
-                                    name="email"
-                                    
-                                    
-                                />
-                                <TextValidator
-                                    className={classes.textField}
-                                    color="primary"
-                                    variant="outlined"
-                                    margin="normal"
-                                    label="Password"
-                                    
-                                />
-                                <br/>
-                                <Link onClick={props.toggle} className={classes.pointer} variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </ValidatorForm>
-                    </CssBaseline>
-                </div>
-            </div>
-        </div>
-
+                        Profile Content do here 
                     </div>
                 </DialogContentText>
             </DialogContent>
@@ -95,7 +56,6 @@ export default function Profile() {
                 Done
                 </Button>
             </DialogActions>
-            </div>
       </Dialog>
     </div>
   );
