@@ -66,12 +66,12 @@ export default function Profile() {
                     <h3>About</h3>
                     <div className="about_data">
                       <div className="data">
-                        <h4>Interests</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h4 className="interest">Interests</h4>
+                        <p className="interestP">Lorem ipsum dolor sit amet.</p>
                       </div>
                       <div className="data">
-                        <h4>Birthday</h4>
-                        <p>dolor sit amet.</p>
+                        <h4 className="interest">Birthday</h4>
+                        <p className="interestP">dolor sit amet.</p>
                       </div>
                     </div>
                   </div>

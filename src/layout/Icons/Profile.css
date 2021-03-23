@@ -2,6 +2,9 @@
 .profileContainer{
     display: flex;
 }
+.demo{
+    background-color: red;
+}
 .left{
   width: 35%;
   background: #0c2637;
@@ -60,7 +63,15 @@
     color: #353c4e;
     margin-bottom: 5px;
 }
-
+.interest{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+.interestP{
+    font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
 .right .info_data .data p,
 .right .projects_data .data p{
   font-size: 13px;
