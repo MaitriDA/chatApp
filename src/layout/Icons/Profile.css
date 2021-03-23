@@ -1,66 +1,93 @@
-
-.card{
-    width: 700px;
-    height: 380px;
-    border: 2px solid white;
-    display: block;
-    margin: auto;
-    margin-top: 100px;
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+.profileContainer{
     display: flex;
-    flex-direction: row;
-    background-color: #feefec;
-    border: 1px solid #0c2637;
-    border-radius: 20px;
 }
-.logInSignUp,.imagels{
-    width: 350px;
-    display: block;
-    margin: auto;
-    height: 340px;
+.left{
+  width: 35%;
+  background: #0c2637;
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
 }
-.imagels{
-    width: 340px;
-    margin-right: -50px;
-    margin-left: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+.left img{
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-.logInSignUp{
-    background-color: white;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+.left h4{
+  margin-bottom: 10px;
 }
-.lsTitle{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 10px;
-    font-size: 30px;
-    color:#0c2637;
-    display: block;
-    margin: auto;
+.left p{
+  font-size: 12px;
 }
-.cardSignUp{
-    width: 800px;
-    height:440px;
-    margin-top: 60px;
-    background-color: rgb(245, 245, 245);
+.right{
+  width: 65%;
+  background: #feefec;
+  padding: 30px 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-.signUp{
-    height: 400px;
-    margin-right: 20px;
-    width: 385px;
+
+.right .info,
+.right .projects{
+  margin-bottom: 25px;
 }
-.imgSignUp{
-    height: 400px;
-    width: 400px;
+
+.right .info h3,
+.right .projects h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #0c2637;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
+
+.right .info_data,
+.right .projects_data{
+  display: flex;
+  justify-content: space-between;
+}
+
+.right .info_data .data,
+.right .projects_data .data{
+  width: 45%;
+}
+
+.right .info_data .data h4,
+.right .projects_data .data h4{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+
+.right .info_data .data p,
+.right .projects_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+.social_media ul{
+  display: flex;
+}
+
+.social_media ul li{
+  width: 45px;
+  height: 45px;
+  background: #0c2637;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.social_media ul li a{
+  color :#fff;
+  display: block;
+  font-size: 18px;
+}
+
 Button{
     margin-top: -10px;
-}
-.ValidationFrom{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.signUpBtn{
-    margin-top: -30px;
 }

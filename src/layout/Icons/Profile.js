@@ -35,27 +35,61 @@ export default function Profile() {
   return (
     <div>
       <LightTooltip title="My Profile" placement="right">
-              <Button onClick={handleClickOpen}>
-                <PersonIcon style={{fontSize:35,color:"white"}}/>
-              </Button>
-            </LightTooltip>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{width:'fir-content'}}>
-            <DialogTitle id="form-dialog-title">Profile Page</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    <div className="demo">
-                        Profile Content do here 
+        <Button onClick={handleClickOpen}>
+          <PersonIcon style={{ fontSize: 35, color: "white" }} />
+        </Button>
+      </LightTooltip>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{ width: 'fir-content' }}>
+        <DialogContent>
+          <DialogContentText>
+            <div className="profileContainer">
+
+              <div className="left">
+                <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100" />
+                <h4>Ruchika Wadhwa</h4>
+                <p>UI Developer</p>
+              </div>
+              <div className="right">
+                <div className="info">
+                  <h3>Profile</h3>
+                  <div className="info_data">
+                    <div className="data">
+                      <h4>Email</h4>
+                      <p>ruchika01.rw@gmail.com</p>
                     </div>
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                Cancel
+                    <div className="data">
+                      <h4>Phone</h4>
+                      <p>9579483827</p>
+                    </div>
+                  </div>
+                  <div className="abouts">
+                    <h3>About</h3>
+                    <div className="about_data">
+                      <div className="data">
+                        <h4>Interests</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                      </div>
+                      <div className="data">
+                        <h4>Birthday</h4>
+                        <p>dolor sit amet.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
                 </Button>
-                <Button onClick={handleClose} color="primary">
-                Done
+          <Button onClick={handleClose} color="primary">
+            Done
                 </Button>
-            </DialogActions>
+        </DialogActions>
       </Dialog>
     </div>
   );
