@@ -1,0 +1,19 @@
+.schedulemessageMain{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.emailAndTitle{
+    display: flex;
+}
+.emailInput{
+    margin: 5px;
+}
+.titleInput{
+    margin: 5px;
+    
+}
+.scheduleMessageMain{
+    margin-top: 10px;
+    margin-left: -15px;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +10,18 @@ import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import './ScheduleMessage.css';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+
+import {
+    DatePicker,
+    TimePicker,
+    DateTimePicker,
+    MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,13 +55,16 @@ export default function ScheduleMessage() {
         container: {
             display: 'flex',
             flexWrap: 'wrap',
-          },
-          textField: {
+        },
+        textField: {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
             width: 200,
-          },
+        },
     }))(Tooltip);
+
+    const [selectedDate, handleDateChange] = useState(new Date());
+    console.log("Date",selectedDate)
     return (
         <div>
 
@@ -60,26 +75,49 @@ export default function ScheduleMessage() {
             </LightTooltip>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{ width: 'fir-content' }}>
                 <div>
-                    <DialogTitle id="form-dialog-title">Schedule Message Page</DialogTitle>
+
                     <DialogContent>
                         <DialogContentText>
-                            <div>
+                            <div>Schedule Messages</div>
+                            <div className="schedulemessageMain">
 
-                                <form className={classes.root} noValidate autoComplete="off">
-                                    <TextField id="standard-basic" label="Select Contact (email)" />
-                                </form>
-                                <form className={classes.container} noValidate>
-                                    <TextField
-                                        id="datetime-local"
-                                        label="Next appointment"
-                                        type="datetime-local"
-                                        defaultValue="2017-05-24T10:30"
-                                        className={classes.textField}
-                                        InputLabelProps={{
-                                            shrink: true,
+                                <div className="emailInput">
+                                    <TextField id="filled-margin-normal" style={{ width: 270 }} label="Contact" fullwidth multiline="true" placeholder="Enter the email" />
+                                </div>
+
+
+                                <div className="titleInput">
+                                    <TextField id="outlined" label="Title" style={{ width: 270 }} multiline="true" placeholder="Enter the message title" />
+                                </div>
+                                <div className="titleInput">
+                                    <TextField id="outlined" label="Message" style={{ width: 270 }} multiline="true" placeholder="Enter your message" />
+                                </div>
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <KeyboardDatePicker
+                                        margin="normal"
+                                        id="date-picker-dialog"
+                                        label="Date picker dialog"
+                                        format="MM/dd/yyyy"
+                                        value={selectedDate}
+                                        style={{ width: 270 }}
+                                        onChange={handleDateChange}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
                                         }}
                                     />
-                                </form>
+                                    <KeyboardTimePicker
+                                        margin="normal"
+                                        id="time-picker"
+                                        label="Time picker"
+                                        value={selectedDate}
+                                        style={{ width: 270 }}
+                                        onChange={handleDateChange}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change time',
+                                        }}
+                                    />
+                                </MuiPickersUtilsProvider>
                             </div>
                         </DialogContentText>
                     </DialogContent>
