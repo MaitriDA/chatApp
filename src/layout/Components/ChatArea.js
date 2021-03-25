@@ -69,8 +69,8 @@ function ChatArea(){
             db.collection('User')
                 .doc(contactEmail)
                 .collection('Chats')
-                .doc(userEmail)
-                .collection('messages')
+        .doc(userEmail)
+        .collection('messages')
                 .add({
                     message:input,
                     contact:contactEmail,

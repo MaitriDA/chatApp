@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import fire from '../../helper/db';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -35,15 +36,15 @@ const useStyles = makeStyles((theme) => ({
 export default function ScheduleMessage() {
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
-    const [contact,setContact]=useState('');
-    const [title,setTitle]=useState('');
-    const [message,setMessage]=useState('');
-    
+    const [contact, setContact] = useState('');
+    const [title, setTitle] = useState('');
+    const [message, setMessage] = useState('');
+    const db=fire.firestore();
     const [selectedDate, handleDateChange] = useState(new Date());
-    console.log("Date",selectedDate)
+    console.log("Date", selectedDate)
 
     const handleClickOpen = () => {
-        
+
         setOpen(true);
     };
 
@@ -51,6 +52,31 @@ export default function ScheduleMessage() {
         setContact("");
         setTitle("");
         setMessage("");
+        setOpen(false);
+    };
+    const handleDone = () => {
+        
+        if (localStorage.getItem('user') !== null) {
+            const userEmail = JSON.parse(localStorage.getItem("user")).email;
+            db.collection('User')
+                .doc(userEmail)
+                .collection('Chats')
+                .doc(contact)
+                .collection('scheduleMessages')
+                .doc(title)
+                .set({
+                    message: message,
+                    conatct: contact,
+                    my: userEmail,
+                    timestamp: selectedDate,
+                })
+        }
+        else {
+            console.log('chat area error');
+        }setContact("");
+        setTitle("");
+        setMessage("");
+
         setOpen(false);
     };
     const LightTooltip = withStyles((theme: Theme) => ({
@@ -75,19 +101,19 @@ export default function ScheduleMessage() {
 
 
 
-    const handleContact=(event)=>{
+    const handleContact = (event) => {
         setContact(event.target.value);
         console.log(contact)
     }
-    const handleTitle=(event)=>{
+    const handleTitle = (event) => {
         setTitle(event.target.value);
         console.log(title)
     }
-    const handleMessage=(event)=>{
+    const handleMessage = (event) => {
         setMessage(event.target.value);
         console.log(message)
     }
-    
+
     return (
         <div>
 
@@ -105,12 +131,12 @@ export default function ScheduleMessage() {
                             <div className="schedulemessageMain">
 
                                 <div className="emailInput">
-                                    <TextField 
-                                        id="filled-margin-normal"  
-                                        style={{ width: 270 }} 
-                                        label="Contact" 
-                                        fullwidth multiline="true" 
-                                        placeholder="Enter the email" 
+                                    <TextField
+                                        id="filled-margin-normal"
+                                        style={{ width: 270 }}
+                                        label="Contact"
+                                        fullwidth multiline="true"
+                                        placeholder="Enter the email"
                                         onChange={handleContact}
                                         value={contact}
                                     />
@@ -118,23 +144,23 @@ export default function ScheduleMessage() {
 
 
                                 <div className="titleInput">
-                                    <TextField 
-                                        id="outlined" 
-                                        label="Title" 
-                                        style={{ width: 270 }} 
-                                        multiline="true" 
+                                    <TextField
+                                        id="outlined"
+                                        label="Title"
+                                        style={{ width: 270 }}
+                                        multiline="true"
                                         placeholder="Enter the message title"
                                         onChange={handleTitle}
-                                        value={title} 
+                                        value={title}
                                     />
                                 </div>
                                 <div className="titleInput">
-                                    <TextField 
-                                        id="outlined" 
-                                        label="Message" 
-                                        style={{ width: 270 }} 
-                                        multiline="true" 
-                                        placeholder="Enter your message" 
+                                    <TextField
+                                        id="outlined"
+                                        label="Message"
+                                        style={{ width: 270 }}
+                                        multiline="true"
+                                        placeholder="Enter your message"
                                         onChange={handleMessage}
                                         value={message}
                                     />
@@ -169,12 +195,19 @@ export default function ScheduleMessage() {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
+                        <div className="scheduleLeft">
                         <Button onClick={handleClose} color="primary">
-                            Cancel
-                </Button>
-                        <Button onClick={handleClose} color="primary">
-                            Done
-                </Button>
+                            see scheduled
+                        </Button>
+                        </div>
+                        <div className="cancelDoneRight">
+                            <Button onClick={handleClose} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={handleDone} color="primary">
+                                Done
+                            </Button>
+                        </div>
                     </DialogActions>
                 </div>
             </Dialog>
