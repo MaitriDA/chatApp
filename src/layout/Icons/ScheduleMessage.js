@@ -35,12 +35,22 @@ const useStyles = makeStyles((theme) => ({
 export default function ScheduleMessage() {
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
+    const [contact,setContact]=useState('');
+    const [title,setTitle]=useState('');
+    const [message,setMessage]=useState('');
+    
+    const [selectedDate, handleDateChange] = useState(new Date());
+    console.log("Date",selectedDate)
 
     const handleClickOpen = () => {
+        
         setOpen(true);
     };
 
     const handleClose = () => {
+        setContact("");
+        setTitle("");
+        setMessage("");
         setOpen(false);
     };
     const LightTooltip = withStyles((theme: Theme) => ({
@@ -63,8 +73,21 @@ export default function ScheduleMessage() {
         },
     }))(Tooltip);
 
-    const [selectedDate, handleDateChange] = useState(new Date());
-    console.log("Date",selectedDate)
+
+
+    const handleContact=(event)=>{
+        setContact(event.target.value);
+        console.log(contact)
+    }
+    const handleTitle=(event)=>{
+        setTitle(event.target.value);
+        console.log(title)
+    }
+    const handleMessage=(event)=>{
+        setMessage(event.target.value);
+        console.log(message)
+    }
+    
     return (
         <div>
 
@@ -82,15 +105,39 @@ export default function ScheduleMessage() {
                             <div className="schedulemessageMain">
 
                                 <div className="emailInput">
-                                    <TextField id="filled-margin-normal" style={{ width: 270 }} label="Contact" fullwidth multiline="true" placeholder="Enter the email" />
+                                    <TextField 
+                                        id="filled-margin-normal"  
+                                        style={{ width: 270 }} 
+                                        label="Contact" 
+                                        fullwidth multiline="true" 
+                                        placeholder="Enter the email" 
+                                        onChange={handleContact}
+                                        value={contact}
+                                    />
                                 </div>
 
 
                                 <div className="titleInput">
-                                    <TextField id="outlined" label="Title" style={{ width: 270 }} multiline="true" placeholder="Enter the message title" />
+                                    <TextField 
+                                        id="outlined" 
+                                        label="Title" 
+                                        style={{ width: 270 }} 
+                                        multiline="true" 
+                                        placeholder="Enter the message title"
+                                        onChange={handleTitle}
+                                        value={title} 
+                                    />
                                 </div>
                                 <div className="titleInput">
-                                    <TextField id="outlined" label="Message" style={{ width: 270 }} multiline="true" placeholder="Enter your message" />
+                                    <TextField 
+                                        id="outlined" 
+                                        label="Message" 
+                                        style={{ width: 270 }} 
+                                        multiline="true" 
+                                        placeholder="Enter your message" 
+                                        onChange={handleMessage}
+                                        value={message}
+                                    />
                                 </div>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
