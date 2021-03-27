@@ -58,18 +58,21 @@ export default function ScheduleMessage() {
         
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
-            db.collection('User')
-                .doc(userEmail)
-                .collection('Chats')
-                .doc(contact)
-                .collection('scheduleMessages')
-                .doc(title)
-                .set({
-                    message: message,
-                    conatct: contact,
-                    my: userEmail,
-                    timestamp: selectedDate,
-                })
+            setTimeout(() => {
+                console.log('Hello, World!')
+                db.collection('User')
+                    .doc(userEmail)
+                    .collection('Chats')
+                    .doc(contact)
+                    .collection('messages')
+                    .doc(title)
+                    .set({
+                        message: message,
+                        conatct: contact,
+                        my: userEmail,
+                        timestamp: selectedDate,
+                    })
+              }, 3000);
         }
         else {
             console.log('chat area error');
@@ -103,16 +106,16 @@ export default function ScheduleMessage() {
 
     const handleContact = (event) => {
         setContact(event.target.value);
-        console.log(contact)
+        
     }
     const handleTitle = (event) => {
         setTitle(event.target.value);
-        console.log(title)
+        
     }
     const handleMessage = (event) => {
         setMessage(event.target.value);
-        console.log(message)
     }
+    console.log('Date',selectedDate);
 
     return (
         <div>
