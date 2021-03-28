@@ -23,6 +23,7 @@ import {
     DateTimePicker,
     MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
+import { StayCurrentLandscapeTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,6 +55,9 @@ export default function ScheduleMessage() {
         setMessage("");
         setOpen(false);
     };
+    const currentDate=new Date();
+    const interval=selectedDate-currentDate;
+    
     const handleDone = () => {
         
         if (localStorage.getItem('user') !== null) {
@@ -72,7 +76,7 @@ export default function ScheduleMessage() {
                         my: userEmail,
                         timestamp: selectedDate,
                     })
-              }, 3000);
+              }, interval);
         }
         else {
             console.log('chat area error');
