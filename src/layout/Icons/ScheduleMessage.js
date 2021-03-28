@@ -23,7 +23,13 @@ import {
     DateTimePicker,
     MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import { StayCurrentLandscapeTwoTone } from '@material-ui/icons';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+  
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,6 +61,9 @@ export default function ScheduleMessage() {
         setMessage("");
         setOpen(false);
     };
+    const handleScheduleMsg = () =>{
+        console.log("Ok");
+    };
     const currentDate=new Date();
     const interval=selectedDate-currentDate;
     
@@ -63,11 +72,24 @@ export default function ScheduleMessage() {
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
             setTimeout(() => {
-                console.log('Hello, World!')
                 db.collection('User')
                     .doc(userEmail)
                     .collection('Chats')
                     .doc(contact)
+                    .collection('messages')
+                    .doc(title)
+                    .set({
+                        message: message,
+                        conatct: contact,
+                        my: userEmail,
+                        timestamp: selectedDate,
+                    })
+              }, interval);
+              setTimeout(() => {
+                db.collection('User')
+                    .doc(contact)
+                    .collection('Chats')
+                    .doc(userEmail)
                     .collection('messages')
                     .doc(title)
                     .set({
@@ -203,9 +225,9 @@ export default function ScheduleMessage() {
                     </DialogContent>
                     <DialogActions>
                         <div className="scheduleLeft">
-                        <Button onClick={handleClose} color="primary">
-                            see scheduled
-                        </Button>
+                            <Button onClick={handleScheduleMsg} color="primary">
+                                see scheduled
+                            </Button>
                         </div>
                         <div className="cancelDoneRight">
                             <Button onClick={handleClose} color="primary">
