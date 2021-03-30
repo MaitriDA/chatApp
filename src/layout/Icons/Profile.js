@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +10,7 @@ import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import Tooltip from '@material-ui/core/Tooltip';
 import './Profile.css';
+import fire from '../../helper/db';
 
 
 export default function Profile() {
@@ -32,6 +33,34 @@ export default function Profile() {
       marginLeft: -10
     },
   }))(Tooltip);
+
+  const db=fire.firestore();
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
+  
+  
+    if(localStorage.getItem('user')!==null){
+      const ls=JSON.parse(localStorage.getItem("user")).email;
+      db.collection('User')
+      .doc(ls)
+      .get()
+      .then(function(doc){
+          if(doc.exists){
+              var UserName=doc.data().name;
+              console.log('USERNAME',UserName);
+              setUserName(UserName);
+              setUserEmail(ls);
+          }
+          else{
+              console.log("No such Document found");
+          }
+      }).catch(function(error){
+          console.log("Error getting document: ",error)
+      });
+    }
+
+  
   return (
     <div>
       <LightTooltip title="My Profile" placement="right">
@@ -39,57 +68,82 @@ export default function Profile() {
           <PersonIcon style={{ fontSize: 35, color: "white" }} />
         </Button>
       </LightTooltip>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{ width: 'fir-content' }}>
+      <Dialog 
+        open={open} 
+        onClose={handleClose} 
+        aria-labelledby="form-dialog-title" 
+        fullWidth
+        maxWidth="sm">
         <DialogContent>
           <DialogContentText>
-            <div className="profileContainer">
-
-              <div className="left">
-                <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100" />
-                <h4>Ruchika Wadhwa</h4>
-                <p>UI Developer</p>
-              </div>
-              <div className="right">
-                <div className="info">
-                  <h3>Profile</h3>
-                  <div className="info_data">
-                    <div className="data">
-                      <h4>Email</h4>
-                      <p>ruchika01.rw@gmail.com</p>
-                    </div>
-                    <div className="data">
-                      <h4>Phone</h4>
-                      <p>9579483827</p>
-                    </div>
-                  </div>
-                  <div className="abouts">
-                    <h3>About</h3>
-                    <div className="about_data">
-                      <div className="data">
-                        <h4 className="interest">Interests</h4>
-                        <p className="interestP">Lorem ipsum dolor sit amet.</p>
-                      </div>
-                      <div className="data">
-                        <h4 className="interest">Birthday</h4>
-                        <p className="interestP">dolor sit amet.</p>
-                      </div>
-                    </div>
-                  </div>
+            <div>My Profile</div>
+            <div className="profileMain">
+              <div className="profilePicture">
+                <div className="picture">hello</div>
+                <div className="changedp">
+                changedp
                 </div>
               </div>
+              <div className="information">
+                <div className="profileInput">
+                  <TextField
+                    id="filled-margin-normal"
+                    style={{ width: 270 }}
+                    label="User Name"
+                    fullwidth multiline="true"
+                    placeholder="Enter the User Name"
+                    value={userName}
+                    
+                  />
+                </div>
+                <div className="profileInput">
 
+                  <TextField
+                    id="filled-margin-normal"
+                    style={{ width: 270 }}
+                    label="Email"
+                    fullwidth multiline="true"
+                    placeholder="Enter the email"
+                    value={userEmail}
+                  />
+                </div>
+                <div className="profileInput">
+
+                  <TextField
+                    id="filled-margin-normal"
+                    style={{ width: 270 }}
+                    label="About Me"
+                    fullwidth multiline="true"
+                    placeholder="Enter the Bio"
+                  />
+                </div>
+                <div className="profileInput">
+
+                  <TextField
+                    id="filled-margin-normal"
+                    style={{ width: 270 }}
+                    label="Contact Number"
+                    fullwidth multiline="true"
+                    placeholder="Enter the Mobile Number"
+                  />
+                </div>
+                
+              </div>
             </div>
+            
 
           </DialogContentText>
         </DialogContent>
+        <div className="profileButton">
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
-                </Button>
+          </Button>
           <Button onClick={handleClose} color="primary">
             Done
-                </Button>
+          </Button>
         </DialogActions>
+        </div>
       </Dialog>
     </div>
   );

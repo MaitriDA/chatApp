@@ -1,104 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
-.profileContainer{
-    display: flex;
-}
-.demo{
-    background-color: red;
-}
-.left{
-  width: 35%;
-  background: #0c2637;
-  padding: 30px 25px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  text-align: center;
-  color: #fff;
-}
-.left img{
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.left h4{
-  margin-bottom: 10px;
-}
-.left p{
-  font-size: 12px;
-}
-.right{
-  width: 65%;
-  background: #feefec;
-  padding: 30px 25px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.right .info,
-.right .projects{
-  margin-bottom: 25px;
-}
-
-.right .info h3,
-.right .projects h3{
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #e0e0e0;
-    color: #0c2637;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-}
-
-.right .info_data,
-.right .projects_data{
+.profileMain{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
 }
-
-.right .info_data .data,
-.right .projects_data .data{
-  width: 45%;
-}
-
-.right .info_data .data h4,
-.right .projects_data .data h4{
-    color: #353c4e;
-    margin-bottom: 5px;
-}
-.interest{
-    color: #353c4e;
-    margin-bottom: 5px;
-}
-.interestP{
-    font-size: 13px;
-  margin-bottom: 10px;
-  color: #919aa3;
-}
-.right .info_data .data p,
-.right .projects_data .data p{
-  font-size: 13px;
-  margin-bottom: 10px;
-  color: #919aa3;
-}
-
-.social_media ul{
+.profilePicture{
+  width: 40%;
+  height: 300px;
+  border: 2px solid red;
   display: flex;
+  flex-direction: column;
 }
-
-.social_media ul li{
-  width: 45px;
-  height: 45px;
-  background: #0c2637;
-  margin-right: 10px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 45px;
+.information{
+  width: 60%;
+  border: 2px solid rgb(36, 32, 32);
+  padding: 20px;
 }
-
-.social_media ul li a{
-  color :#fff;
-  display: block;
-  font-size: 18px;
+.profileButton{
+  border: 2px solid red;
+  margin-top: -20px;
 }
-
-Button{
-    margin-top: -10px;
+.picture{
+  border: 2px solid red;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
+.changedp{
+  margin: auto;
+  margin-top: -50px;
+}
+.profileInput{
+  margin-bottom: 15px;
+  margin-left: 10px;
 }
