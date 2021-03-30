@@ -6,17 +6,26 @@
 .emailAndTitle{
     display: flex;
 }
-.emailInput{
+.input{
     margin: 5px;
-}
-.titleInput{
-    margin: 5px;
-    
+    margin-top: 10px;
 }
 .scheduleMessageMain{
-    margin-top: 10px;
-    margin-left: -15px;
+    margin-top: 20px;
+    width: 50%;
 }
 .scheduleLeft{
     margin-right: auto;
+}
+.SMessage{
+    display: flex;
+    flex-direction: row;
+}
+.seeMessages{
+    border: 2px solid red;
+    width: 50%;
+    height: 400px;
+}
+.dateInput{
+    margin-left: 5px;
 }

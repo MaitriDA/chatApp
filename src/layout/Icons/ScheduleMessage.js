@@ -23,12 +23,6 @@ import {
     DateTimePicker,
     MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
   
 
 const useStyles = makeStyles((theme) => ({
@@ -151,84 +145,90 @@ export default function ScheduleMessage() {
                     <ScheduleIcon style={{ fontSize: 35, color: "white" }} />
                 </Button>
             </LightTooltip>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{ width: 'fir-content' }}>
+            <Dialog 
+                open={open} 
+                onClose={handleClose} 
+                aria-labelledby="form-dialog-title"
+                fullWidth
+                maxWidth="sm">
                 <div>
 
                     <DialogContent>
                         <DialogContentText>
                             <div>Schedule Messages</div>
-                            <div className="schedulemessageMain">
+                            <div className="SMessage">
+                                <div className="scheduleMessageMain">
 
-                                <div className="emailInput">
-                                    <TextField
-                                        id="filled-margin-normal"
-                                        style={{ width: 270 }}
-                                        label="Contact"
-                                        fullwidth multiline="true"
-                                        placeholder="Enter the email"
-                                        onChange={handleContact}
-                                        value={contact}
-                                    />
+                                        <div className="input">
+                                            <TextField
+                                                id="filled-margin-normal"
+                                                style={{ width: 270 }}
+                                                label="Contact"
+                                                fullwidth multiline="true"
+                                                placeholder="Enter the email"
+                                                onChange={handleContact}
+                                                value={contact}
+                                            />
+                                        </div>
+
+
+                                        <div className="input">
+                                            <TextField
+                                                id="outlined"
+                                                label="Title"
+                                                style={{ width: 270 }}
+                                                multiline="true"
+                                                placeholder="Enter the message title"
+                                                onChange={handleTitle}
+                                                value={title}
+                                            />
+                                        </div>
+                                        <div className="input">
+                                            <TextField
+                                                id="outlined"
+                                                label="Message"
+                                                style={{ width: 270 }}
+                                                multiline="true"
+                                                placeholder="Enter your message"
+                                                onChange={handleMessage}
+                                                value={message}
+                                            />
+                                        </div>
+                                        <div className="dateInput">
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <KeyboardDatePicker
+                                                margin="normal"
+                                                id="date-picker-dialog"
+                                                label="Date picker dialog"
+                                                format="MM/dd/yyyy"
+                                                value={selectedDate}
+                                                style={{ width: 270 }}
+                                                onChange={handleDateChange}
+                                                KeyboardButtonProps={{
+                                                    'aria-label': 'change date',
+                                                }}
+                                            />
+                                            <KeyboardTimePicker
+                                                margin="normal"
+                                                id="time-picker"
+                                                label="Time picker"
+                                                value={selectedDate}
+                                                style={{ width: 270 }}
+                                                onChange={handleDateChange}
+                                                KeyboardButtonProps={{
+                                                    'aria-label': 'change time',
+                                                }}
+                                            />
+                                        </MuiPickersUtilsProvider>
+                                        </div>
                                 </div>
-
-
-                                <div className="titleInput">
-                                    <TextField
-                                        id="outlined"
-                                        label="Title"
-                                        style={{ width: 270 }}
-                                        multiline="true"
-                                        placeholder="Enter the message title"
-                                        onChange={handleTitle}
-                                        value={title}
-                                    />
+                                <div className="seeMessages">
+                                    See cheduled Msg
                                 </div>
-                                <div className="titleInput">
-                                    <TextField
-                                        id="outlined"
-                                        label="Message"
-                                        style={{ width: 270 }}
-                                        multiline="true"
-                                        placeholder="Enter your message"
-                                        onChange={handleMessage}
-                                        value={message}
-                                    />
-                                </div>
-
-                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <KeyboardDatePicker
-                                        margin="normal"
-                                        id="date-picker-dialog"
-                                        label="Date picker dialog"
-                                        format="MM/dd/yyyy"
-                                        value={selectedDate}
-                                        style={{ width: 270 }}
-                                        onChange={handleDateChange}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change date',
-                                        }}
-                                    />
-                                    <KeyboardTimePicker
-                                        margin="normal"
-                                        id="time-picker"
-                                        label="Time picker"
-                                        value={selectedDate}
-                                        style={{ width: 270 }}
-                                        onChange={handleDateChange}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change time',
-                                        }}
-                                    />
-                                </MuiPickersUtilsProvider>
                             </div>
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <div className="scheduleLeft">
-                            <Button onClick={handleScheduleMsg} color="primary">
-                                see scheduled
-                            </Button>
-                        </div>
                         <div className="cancelDoneRight">
                             <Button onClick={handleClose} color="primary">
                                 Cancel
