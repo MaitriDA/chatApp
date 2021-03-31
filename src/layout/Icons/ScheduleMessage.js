@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
             width: '25ch',
         },
     },
+    submit: {
+        background: 'linear-gradient(45deg, #0c2637 30%, #0c2637 90%)',
+        color: '#feefec',
+    }
 }));
 
 export default function ScheduleMessage() {
@@ -230,10 +234,10 @@ export default function ScheduleMessage() {
                     </DialogContent>
                     <DialogActions>
                         <div className="cancelDoneRight">
-                            <Button onClick={handleClose} color="primary">
+                            <Button onClick={handleClose} className={classes.submit}>
                                 Cancel
                             </Button>
-                            <Button onClick={handleDone} color="primary">
+                            <Button onClick={handleDone} className={classes.submit}>
                                 Done
                             </Button>
                         </div>
