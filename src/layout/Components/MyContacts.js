@@ -6,7 +6,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import avatar from '../../avatar/avatar4.png';
+
+import avatar1 from '../../avatar/avatar1.jpg';
+import avatar2 from '../../avatar/avatar2.jpg';
+import avatar3 from '../../avatar/avatar3.jpg';
+import avatar4 from '../../avatar/avatar4.jpg';
+import avatar5 from '../../avatar/avatar5.jpg';
+import avatar6 from '../../avatar/avatar6.jpg';
 
 function MyContacts({ key, id, name, addNewContact }) {
 
@@ -36,7 +42,7 @@ function MyContacts({ key, id, name, addNewContact }) {
     return !addNewContact ? (
         <Router>
             <div className="myContact" onClick={() => history.push(`/contact/${id}`)}>
-                <Avatar src={avatar}/>
+                <Avatar src={avatar1}/>
                 <div className="myContactInfo">
                     <div className="myContactName">
                         {name}

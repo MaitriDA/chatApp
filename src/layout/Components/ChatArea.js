@@ -7,7 +7,13 @@ import fire from '../../helper/db';
 import Button from '@material-ui/core/Button';
 import ImageIcon from '@material-ui/icons/Image';
 import SendIcon from '@material-ui/icons/Send';
-import avatar from '../../avatar/avatar4.png';
+
+import avatar1 from '../../avatar/avatar1.jpg';
+import avatar2 from '../../avatar/avatar2.jpg';
+import avatar3 from '../../avatar/avatar3.jpg';
+import avatar4 from '../../avatar/avatar4.jpg';
+import avatar5 from '../../avatar/avatar5.jpg';
+import avatar6 from '../../avatar/avatar6.jpg';
 
 
 function ChatArea(){
@@ -91,7 +97,7 @@ function ChatArea(){
         <div className="mainChatArea">
             <div className="chatAreaHeader">
                 <div className="chatAreaContactName">
-                    <Avatar src={avatar}/>
+                    <Avatar src={avatar2}/>
                     <div className="chatName">
                         <div classNmae="chatAreaInfo">{contactName}</div>
                     </div>

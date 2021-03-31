@@ -2,35 +2,71 @@
   display: flex;
   flex-direction: row;
 }
+.profileHeading{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+  color: #0c2637;
+}
 .profilePicture{
-  width: 40%;
-  height: 300px;
-  border: 2px solid red;
+  
+  width: 50%;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  
 }
 .information{
-  width: 60%;
-  border: 2px solid rgb(36, 32, 32);
+  
+  width: 50%;
   padding: 20px;
+  margin-top:10px;
+  
 }
 .profileButton{
-  border: 2px solid red;
   margin-top: -20px;
 }
 .picture{
-  border: 2px solid red;
-  height: 150px;
-  width: 150px;
+  border: 2px solid black;
+  height: 140px;
+  width: 140px;
   border-radius: 50%;
   margin: auto;
-  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.avatar{
+  margin-bottom: 20px;
 }
 .changedp{
   margin: auto;
-  margin-top: -50px;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 120px;
 }
 .profileInput{
   margin-bottom: 15px;
   margin-left: 10px;
+}
+.avatarHeading{
+  text-align: center;
+}
+.buttonArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+.customImage{
+  
+  margin-bottom: -20px;
+  display: inline;
+  
+  margin: auto;
 }
