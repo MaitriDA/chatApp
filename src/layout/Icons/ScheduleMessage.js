@@ -20,6 +20,7 @@ import {
   DateTimePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
+import {Divider} from '@material-ui/core';
 
 const useStyles = makeStyles (theme => ({
   root: {
@@ -151,9 +152,14 @@ export default function ScheduleMessage () {
       >
         <div>
           <DialogContent style={{backgroundColor: '#feefec'}}>
-            <DialogContentText style={{backgroundColor: 'white', borderRadius: '15px'}}>
+            <DialogContentText
+              style={{backgroundColor: 'white', borderRadius: '15px'}}
+            >
               <div className="SMessage">
                 <div className="scheduleMessageMain">
+                  <div className="scheduleMsgHeading">
+                    Scheduled Msg
+                  </div>
                   <div className="inputFields">
                     <div className="input">
                       <TextField
@@ -218,24 +224,66 @@ export default function ScheduleMessage () {
                       </MuiPickersUtilsProvider>
                     </div>
                   </div>
-                <DialogActions>
-                  <div className="scheduleButtonArea">
-                    <div className="scheduleCancel">
-                      <Button onClick={handleClose} className={classes.submit}>
-                        Cancel
-                      </Button>
+                  <DialogActions>
+                    <div className="scheduleButtonArea">
+                      <div className="scheduleCancel">
+                        <Button
+                          onClick={handleClose}
+                          className={classes.submit}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                      <div className="scheduleDone">
+                        <Button onClick={handleDone} className={classes.submit}>
+                          Done
+                        </Button>
+                      </div>
                     </div>
-                    <div className="scheduleDone">
-                      <Button onClick={handleDone} className={classes.submit}>
-                        Done
-                      </Button>
+                  </DialogActions>
+                </div>
+                <div className="seeMessages">
+                  
+
+                    <div className="listScheduleMsg">
+                      <div className="individualList">
+                        <div className="titelScheduleMsg">
+                          Title: Birthday
+                        </div>
+                        <div className="contactScheduleMsg">
+                          Contact: Ruchika
+                        </div>
+                        <div className="time">
+                          Time: 28th April
+                        </div>
+                      </div>
+                      <div className="individualList">
+                        <div className="titelScheduleMsg">
+                          This is title
+                        </div>
+                        <div className="contactScheduleMsg">
+                          Contact
+                        </div>
+                        <div className="time">
+                          Time
+                        </div>
+                      </div>
+
+                      <div className="individualList">
+                        <div className="titelScheduleMsg">
+                          This is title
+                        </div>
+                        <div className="contactScheduleMsg">
+                          Contact
+                        </div>
+                        <div className="time">
+                          Time
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </DialogActions>
-                </div>
-              <div className="seeMessages">
-                See cheduled Msg
-              </div>
+
+                
               </div>
 
             </DialogContentText>
