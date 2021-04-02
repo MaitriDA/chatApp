@@ -44,7 +44,7 @@ function MyContacts({ key, id, name, addNewContact }) {
         const ls = JSON.parse (localStorage.getItem ('user')).email;
         db
           .collection ('Users')
-          .doc (email)
+          .doc (ls)
           .get ()
           .then (function (doc) {
             if (doc.exists) {
