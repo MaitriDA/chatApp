@@ -29,14 +29,14 @@ function ChatArea(){
             const userEmail=JSON.parse(localStorage.getItem("user")).email;
 
             if(contactEmail){
-                db.collection('User')
+                db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
                 .onSnapshot(snapshot=>(
                     setContactName(snapshot.data().name)
                 ))
-                db.collection('User')
+                db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
@@ -59,28 +59,28 @@ function ChatArea(){
         console.log('You typed>>',input);
         if(localStorage.getItem('user')!==null){
             const userEmail=JSON.parse(localStorage.getItem("user")).email;
-            db.collection('User')
+            db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
                 .collection('messages')
                 .add({
                     message:input,
-                    conatct:contactEmail,
-                    my:userEmail,
+                    receiver:contactEmail,
+                    sender:userEmail,
                     timestamp:new Date(),
                     
                 })
 
-            db.collection('User')
+            db.collection('Users')
                 .doc(contactEmail)
                 .collection('Chats')
-        .doc(userEmail)
-        .collection('messages')
+                .doc(userEmail)
+                .collection('messages')
                 .add({
                     message:input,
-                    contact:contactEmail,
-                    my:userEmail,
+                    receiver:contactEmail,
+                    sender:userEmail,
                     timestamp:new Date(),
                     
                 })
@@ -106,7 +106,7 @@ function ChatArea(){
             <div className="chatAreaBody">
                 {messages.map(message=>(
 
-                <p className={`chatAreaMessages  ${message.my==contactEmail && 'chatAreaMessageReceiver'} ${message.my!=contactEmail && 'chatAreaMessageMy'}`}>
+                <p className={`chatAreaMessages  ${message.sender==contactEmail && 'chatAreaMessageReceiver'} ${message.sender!=contactEmail && 'chatAreaMessageMy'}`}>
                    {message.message}
                 </p>
                 ))}

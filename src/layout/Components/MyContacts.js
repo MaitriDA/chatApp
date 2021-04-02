@@ -27,7 +27,7 @@ function MyContacts({ key, id, name, addNewContact }) {
         console.log(userEmail)
         if (contact) {
             if (email) {
-                db.collection('User')
+                db.collection('Users')
                     .doc(userEmail)
                     .collection('Chats')
                     .doc(email)

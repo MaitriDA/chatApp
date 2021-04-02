@@ -67,7 +67,7 @@ export default function ScheduleMessage () {
       const userEmail = JSON.parse (localStorage.getItem ('user')).email;
       setTimeout (() => {
         db
-          .collection ('User')
+          .collection ('Users')
           .doc (userEmail)
           .collection ('Chats')
           .doc (contact)
@@ -82,7 +82,7 @@ export default function ScheduleMessage () {
       }, interval);
       setTimeout (() => {
         db
-          .collection ('User')
+          .collection ('Users')
           .doc (contact)
           .collection ('Chats')
           .doc (userEmail)
@@ -248,24 +248,24 @@ export default function ScheduleMessage () {
                     <div className="listScheduleMsg">
                       <div className="individualList">
                         <div className="titelScheduleMsg">
-                          Title: Birthday
+                          Title: Ask abt today's lecture
                         </div>
                         <div className="contactScheduleMsg">
                           Contact: Ruchika
                         </div>
                         <div className="time">
-                          Time: 28th April
+                          Time: 2nd April
                         </div>
                       </div>
                       <div className="individualList">
                         <div className="titelScheduleMsg">
-                          This is title
+                          Title: Asavari
                         </div>
                         <div className="contactScheduleMsg">
-                          Contact
+                          Contact: Birthday
                         </div>
                         <div className="time">
-                          Time
+                          Time: 4th April
                         </div>
                       </div>
 

@@ -16,7 +16,7 @@ const ContactList=(props)=>{
         if(localStorage.getItem('user')!==null){
             const userEmail=JSON.parse(localStorage.getItem("user")).email;
             const db=fire.firestore();
-            db.collection('User')
+            db.collection('Users')
             .doc(userEmail)
             .collection('Chats')
             .onSnapshot(snapshot=>(

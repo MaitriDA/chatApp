@@ -23,7 +23,7 @@ const Header=(props)=>{
     };
     if(localStorage.getItem('user')!==null){
         const ls=JSON.parse(localStorage.getItem("user")).email;
-        db.collection('User')
+        db.collection('Users')
         .doc(ls)
         .get()
         .then(function(doc){

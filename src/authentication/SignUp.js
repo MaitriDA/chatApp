@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Vector1 from '../images/vector1.jpg';
 import fire from '../helper/db';
 import './common.css';
+import None from '../avatar/None.jpg';
 
 const SignUp = (props) => {
 
@@ -44,10 +45,12 @@ const SignUp = (props) => {
                 if (response) {
                     props.toggle();
                     toast.success('User Registered Successfully');
-                    db.collection('User')
+                    db.collection('Users')
                         .doc(email)
                         .set({
-                            name:name
+                            name:name,
+                            email:email,
+                            avatar:None
                         })
                 }
                 setLoading(false);

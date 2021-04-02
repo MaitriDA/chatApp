@@ -13,6 +13,7 @@ import './Profile.css';
 import fire from '../../helper/db';
 import {Avatar} from '@material-ui/core';
 
+import None from '../../avatar/None.jpg';
 import avatar1 from '../../avatar/avatar1.jpg';
 import avatar2 from '../../avatar/avatar2.jpg';
 import avatar3 from '../../avatar/avatar3.jpg';
@@ -21,6 +22,7 @@ import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
 
 export default function Profile () {
+  const avatarLst=['None','avatar1']
   const [open, setOpen] = React.useState (false);
   const classes = useStyles();
 
@@ -45,19 +47,23 @@ export default function Profile () {
   const db = fire.firestore ();
   const [userName, setUserName] = useState ('');
   const [userEmail, setUserEmail] = useState ('');
+  const [avatar,setAvatar]=useState('None');
+
 
   if (localStorage.getItem ('user') !== null) {
     const ls = JSON.parse (localStorage.getItem ('user')).email;
     db
-      .collection ('User')
+      .collection ('Users')
       .doc (ls)
       .get ()
       .then (function (doc) {
         if (doc.exists) {
           var UserName = doc.data ().name;
+          var avatarName=doc.data().avatar;
           console.log ('USERNAME', UserName);
           setUserName (UserName);
           setUserEmail (ls);
+          setAvatar(avatarName)
         } else {
           console.log ('No such Document found');
         }
@@ -65,6 +71,44 @@ export default function Profile () {
       .catch (function (error) {
         console.log ('Error getting document: ', error);
       });
+  }
+  console.log(avatar)
+  const handleAvatar1=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar1
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
+  }
+
+  const handleAvatar2=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar2
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
   }
 
 
@@ -90,11 +134,11 @@ export default function Profile () {
 
             <div className="profileMain">
               <div className="profilePicture">
-                <div className="picture"></div>
+                <img src={avatar} className="picture"/>
                 <div className="avatar">
                   <div className="avatarHeading">AVATAR</div>
                   <div className="changedp">
-                    <Button>
+                    <Button onClick={handleAvatar1}>
                       <Avatar
                         src={avatar1}
                         style={{
@@ -104,7 +148,7 @@ export default function Profile () {
                         }}
                       />
                     </Button>
-                    <Button>
+                    <Button onClick={handleAvatar2}>
                       <Avatar
                         src={avatar2}
                         style={{
