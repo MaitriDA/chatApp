@@ -49,30 +49,6 @@ export default function Profile () {
   const [userEmail, setUserEmail] = useState ('');
   const [avatar,setAvatar]=useState('None');
 
-
-  if (localStorage.getItem ('user') !== null) {
-    const ls = JSON.parse (localStorage.getItem ('user')).email;
-    db
-      .collection ('Users')
-      .doc (ls)
-      .get ()
-      .then (function (doc) {
-        if (doc.exists) {
-          var UserName = doc.data ().name;
-          var avatarName=doc.data().avatar;
-          console.log ('USERNAME', UserName);
-          setUserName (UserName);
-          setUserEmail (ls);
-          setAvatar(avatarName)
-        } else {
-          console.log ('No such Document found');
-        }
-      })
-      .catch (function (error) {
-        console.log ('Error getting document: ', error);
-      });
-  }
-  console.log(avatar)
   const handleAvatar1=()=>{
     console.log('Clicked')
     if (localStorage.getItem ('user') !== null) {
@@ -111,6 +87,105 @@ export default function Profile () {
     }
   }
 
+  const handleAvatar3=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar3
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
+  }
+
+  const handleAvatar4=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar4
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
+  }
+
+  const handleAvatar5=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar5
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
+  }
+
+  const handleAvatar6=()=>{
+    console.log('Clicked')
+    if (localStorage.getItem ('user') !== null) {
+      const ls = JSON.parse (localStorage.getItem ('user')).email;
+      db.collection ('Users')
+        .doc (ls)
+        .set({
+          name:userName,
+          email:userEmail,
+          avatar:avatar6
+
+        })
+        .catch (function (error) {
+          console.log ('Error getting document: ', error);
+        });
+        console.log('Clicked completed');
+    }
+  }
+
+
+  if (localStorage.getItem ('user') !== null) {
+    const ls = JSON.parse (localStorage.getItem ('user')).email;
+    db
+      .collection ('Users')
+      .doc (ls)
+      .get ()
+      .then (function (doc) {
+        if (doc.exists) {
+          var UserName = doc.data ().name;
+          var avatarName=doc.data().avatar;
+          console.log ('USERNAME', UserName);
+          setUserName (UserName);
+          setUserEmail (ls);
+          setAvatar(avatarName)
+        } else {
+          console.log ('No such Document found');
+        }
+      })
+      .catch (function (error) {
+        console.log ('Error getting document: ', error);
+      });
+  }
 
 
   return (
@@ -158,7 +233,7 @@ export default function Profile () {
                         }}
                       />
                     </Button>
-                    <Button>
+                    <Button onClick={handleAvatar3}>
                       <Avatar
                         src={avatar3}
                         style={{
@@ -168,7 +243,7 @@ export default function Profile () {
                         }}
                       />
                     </Button>
-                    <Button>
+                    <Button onClick={handleAvatar4}>
                       <Avatar
                         src={avatar4}
                         style={{
@@ -178,7 +253,7 @@ export default function Profile () {
                         }}
                       />
                     </Button>
-                    <Button>
+                    <Button onClick={handleAvatar5}>
                       <Avatar
                         src={avatar5}
                         style={{
@@ -188,7 +263,7 @@ export default function Profile () {
                         }}
                       />
                     </Button>
-                    <Button>
+                    <Button onClick={handleAvatar6}>
                       <Avatar
                         src={avatar6}
                         style={{

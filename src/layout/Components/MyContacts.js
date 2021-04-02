@@ -38,11 +38,31 @@ function MyContacts({ key, id, name, addNewContact }) {
         }
 
     };
+    const [avatar,setAvatar]=useState('None');
+
+    if (localStorage.getItem ('user') !== null) {
+        const ls = JSON.parse (localStorage.getItem ('user')).email;
+        db
+          .collection ('Users')
+          .doc (email)
+          .get ()
+          .then (function (doc) {
+            if (doc.exists) {
+              var avatarName=doc.data().avatar;
+              setAvatar(avatarName)
+            } else {
+              console.log ('No such Document found');
+            }
+          })
+          .catch (function (error) {
+            console.log ('Error getting document: ', error);
+          });
+      }
 
     return !addNewContact ? (
         <Router>
             <div className="myContact" onClick={() => history.push(`/contact/${id}`)}>
-                <Avatar src={avatar1}/>
+                <Avatar src={avatar}/>
                 <div className="myContactInfo">
                     <div className="myContactName">
                         {name}
