@@ -14,7 +14,7 @@ import avatar3 from '../../avatar/avatar3.jpg';
 import avatar4 from '../../avatar/avatar4.jpg';
 import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
-
+import firebase from 'firebase/app';
 
 function ChatArea(){
     const [input,setInput]=useState("");
@@ -40,20 +40,18 @@ function ChatArea(){
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
-                .collection('messages')
-                .orderBy('timestamp')
                 .onSnapshot(snapshot=>(
-                    setMessages(snapshot.docs.map(doc=>
-                        doc.data()))
+                    setMessages(snapshot.data())
                 ))
             }
         }
+
         else{
             console.log('chat area error')
         }
     },[contactEmail])
 
-    
+    console.log(messages)
     const sendMessage=(e)=>{
         e.preventDefault();
         console.log('You typed>>',input);
@@ -63,12 +61,17 @@ function ChatArea(){
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
-                .collection('messages')
-                .add({
-                    message:input,
-                    receiver:contactEmail,
-                    sender:userEmail,
-                    timestamp:new Date(),
+                
+                .update({
+                    "chats":firebase.firestore.FieldValue.arrayUnion(
+                        {
+                            
+                            "message":input,
+                            "receiver":contactEmail,
+                            "sender":userEmail,
+                            "timestamp":new Date(),
+                        }
+                    )
                     
                 })
 
@@ -76,12 +79,17 @@ function ChatArea(){
                 .doc(contactEmail)
                 .collection('Chats')
                 .doc(userEmail)
-                .collection('messages')
-                .add({
-                    message:input,
-                    receiver:contactEmail,
-                    sender:userEmail,
-                    timestamp:new Date(),
+                
+                .update({
+                    "chats":firebase.firestore.FieldValue.arrayUnion(
+                        {
+                            
+                            "message":input,
+                            "receiver":contactEmail,
+                            "sender":userEmail,
+                            "timestamp":new Date(),
+                        }
+                    )
                     
                 })
 
@@ -92,6 +100,13 @@ function ChatArea(){
         }
         console.log(contactEmail);
     }
+
+    const createMessagesBubble=({
+        messages.chats.forEach(message => {
+            var bubble=document.createElement("p");
+            bubble.className=`chatAreaMessages  ${message.sender==contactEmail && 'chatAreaMessageReceiver'} ${message.sender!=contactEmail && 'chatAreaMessageMy'}`
+        });
+    })
 
     return(
         <div className="mainChatArea">
@@ -104,12 +119,12 @@ function ChatArea(){
                 </div>
             </div>
             <div className="chatAreaBody">
-                {messages.map(message=>(
+                
 
-                <p className={`chatAreaMessages  ${message.sender==contactEmail && 'chatAreaMessageReceiver'} ${message.sender!=contactEmail && 'chatAreaMessageMy'}`}>
-                   {message.message}
+                <p className={`chatAreaMessages  ${messages.sender==contactEmail && 'chatAreaMessageReceiver'} ${messages.sender!=contactEmail && 'chatAreaMessageMy'}`}>
+                   {messages.message}
                 </p>
-                ))}
+                
             </div>
             <div className="chatAreaFooter">
                 <div className="sendMessageArea">
