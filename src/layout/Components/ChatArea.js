@@ -57,7 +57,7 @@ function ChatArea() {
         console.log('You typed>>', input);
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
-            await db.collection('Users')
+            db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
@@ -73,7 +73,7 @@ function ChatArea() {
 
                 })
 
-            await db.collection('Users')
+            db.collection('Users')
                 .doc(contactEmail)
                 .collection('Chats')
                 .doc(userEmail)
@@ -99,6 +99,7 @@ function ChatArea() {
 
     const createMessagesBubble = (snapshot) => {
         var messages = snapshot.data();
+        console.log(messages);
         var chatAreaBody = document.getElementById("chatAreaBody");
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
@@ -109,6 +110,7 @@ function ChatArea() {
             bubble.className = `chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`;
             bubble.innerText = message.message;
             chatAreaBody.appendChild(bubble);
+            setInput("");
         })
         // var chatAreaBody = document.getElementById("chatAreaBody");
         // chatAreaBody.innerText = messages.chats[0].message;

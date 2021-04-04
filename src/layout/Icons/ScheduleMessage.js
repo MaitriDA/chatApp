@@ -13,7 +13,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import './ScheduleMessage.css';
 import DateFnsUtils from '@date-io/date-fns';
 import {KeyboardTimePicker, KeyboardDatePicker} from '@material-ui/pickers';
-
+import firebase from 'firebase/app';
 import {
   DatePicker,
   TimePicker,
@@ -66,34 +66,38 @@ export default function ScheduleMessage () {
     if (localStorage.getItem ('user') !== null) {
       const userEmail = JSON.parse (localStorage.getItem ('user')).email;
       setTimeout (() => {
-        db
-          .collection ('Users')
-          .doc (userEmail)
-          .collection ('Chats')
-          .doc (contact)
-          .collection ('messages')
-          .doc (title)
-          .set ({
-            message: message,
-            conatct: contact,
-            my: userEmail,
-            timestamp: selectedDate,
-          });
+        db.collection('Users')
+                .doc(userEmail)
+                .collection('Chats')
+                .doc(contact)
+                .update({
+                    "chats": firebase.firestore.FieldValue.arrayUnion(
+                        {
+                            "message": message,
+                            "receiver": contact,
+                            "sender": userEmail,
+                            "timestamp": new Date(),
+                        }
+                    )
+
+                })
       }, interval);
       setTimeout (() => {
-        db
-          .collection ('Users')
-          .doc (contact)
-          .collection ('Chats')
-          .doc (userEmail)
-          .collection ('messages')
-          .doc (title)
-          .set ({
-            message: message,
-            conatct: contact,
-            my: userEmail,
-            timestamp: selectedDate,
-          });
+        db.collection('Users')
+                .doc(contact)
+                .collection('Chats')
+                .doc(userEmail)
+                .update({
+                    "chats": firebase.firestore.FieldValue.arrayUnion(
+                        {
+                            "message": message,
+                            "receiver": contact,
+                            "sender": userEmail,
+                            "timestamp": new Date(),
+                        }
+                    )
+
+                })
       }, interval);
     } else {
       console.log ('chat area error');

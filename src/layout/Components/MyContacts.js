@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-
+import firebase from 'firebase/app';
 import avatar1 from '../../avatar/avatar1.jpg';
 import avatar2 from '../../avatar/avatar2.jpg';
 import avatar3 from '../../avatar/avatar3.jpg';
@@ -36,6 +36,21 @@ function MyContacts({ key, id, name, addNewContact }) {
                     })
             }
         }
+        db.collection('Users')
+                .doc(userEmail)
+                .collection('Chats')
+                .doc(email)
+                .update({
+                    "chats": firebase.firestore.FieldValue.arrayUnion(
+                        {
+                            "message": " ",
+                            "receiver": email,
+                            "sender": userEmail,
+                            "timestamp": new Date(),
+                        }
+                    )
+
+                })
 
     };
     const [avatar,setAvatar]=useState('None');
