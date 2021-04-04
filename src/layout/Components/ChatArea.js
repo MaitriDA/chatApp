@@ -16,129 +16,133 @@ import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
 import firebase from 'firebase/app';
 
-function ChatArea(){
-    const [input,setInput]=useState("");
-    const {contactEmail}=useParams();
-    const [contactName,setContactName]=useState('');
-    const [messages,setMessages]=useState([]);
-    const db=fire.firestore();
-    
+function ChatArea() {
+    const [input, setInput] = useState("");
+    const { contactEmail } = useParams();
+    const [contactName, setContactName] = useState('');
+    const [messages, setMessages] = useState([]);
+    const db = fire.firestore();
 
-    useEffect(()=>{
-        if(localStorage.getItem('user')!==null){
-            const userEmail=JSON.parse(localStorage.getItem("user")).email;
 
-            if(contactEmail){
+    useEffect(async () => {
+        if (localStorage.getItem('user') !== null) {
+            const userEmail = JSON.parse(localStorage.getItem("user")).email;
+
+            if (contactEmail) {
                 db.collection('Users')
-                .doc(userEmail)
-                .collection('Chats')
-                .doc(contactEmail)
-                .onSnapshot(snapshot=>(
-                    setContactName(snapshot.data().name)
-                ))
+                    .doc(userEmail)
+                    .collection('Chats')
+                    .doc(contactEmail)
+                    .onSnapshot(snapshot => (
+                        setContactName(snapshot.data().name)
+                    ));
                 db.collection('Users')
-                .doc(userEmail)
-                .collection('Chats')
-                .doc(contactEmail)
-                .onSnapshot(snapshot=>(
-                    setMessages(snapshot.data())
-                ))
+                    .doc(userEmail)
+                    .collection('Chats')
+                    .doc(contactEmail)
+                    .onSnapshot(snapshot => (
+                        createMessagesBubble(snapshot)
+                    ))
             }
         }
 
-        else{
+        else {
             console.log('chat area error')
         }
-    },[contactEmail])
+    }, [contactEmail])
 
     console.log(messages)
-    const sendMessage=(e)=>{
+    const sendMessage = async (e) => {
         e.preventDefault();
-        console.log('You typed>>',input);
-        if(localStorage.getItem('user')!==null){
-            const userEmail=JSON.parse(localStorage.getItem("user")).email;
-            db.collection('Users')
+        console.log('You typed>>', input);
+        if (localStorage.getItem('user') !== null) {
+            const userEmail = JSON.parse(localStorage.getItem("user")).email;
+            await db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
                 .doc(contactEmail)
-                
                 .update({
-                    "chats":firebase.firestore.FieldValue.arrayUnion(
+                    "chats": firebase.firestore.FieldValue.arrayUnion(
                         {
-                            
-                            "message":input,
-                            "receiver":contactEmail,
-                            "sender":userEmail,
-                            "timestamp":new Date(),
+                            "message": input,
+                            "receiver": contactEmail,
+                            "sender": userEmail,
+                            "timestamp": new Date(),
                         }
                     )
-                    
+
                 })
 
-            db.collection('Users')
+            await db.collection('Users')
                 .doc(contactEmail)
                 .collection('Chats')
                 .doc(userEmail)
-                
                 .update({
-                    "chats":firebase.firestore.FieldValue.arrayUnion(
+                    "chats": firebase.firestore.FieldValue.arrayUnion(
                         {
-                            
-                            "message":input,
-                            "receiver":contactEmail,
-                            "sender":userEmail,
-                            "timestamp":new Date(),
+                            "message": input,
+                            "receiver": contactEmail,
+                            "sender": userEmail,
+                            "timestamp": new Date(),
                         }
                     )
-                    
+
                 })
 
             setInput("");
         }
-        else{
+        else {
             console.log('chat area error');
         }
         console.log(contactEmail);
     }
 
-    const createMessagesBubble=({
+    const createMessagesBubble = (snapshot) => {
+        var messages = snapshot.data();
+        var chatAreaBody = document.getElementById("chatAreaBody");
+        chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
-            var bubble=document.createElement("p");
-            bubble.className=`chatAreaMessages  ${message.sender==contactEmail && 'chatAreaMessageReceiver'} ${message.sender!=contactEmail && 'chatAreaMessageMy'}`
-        });
-    })
+            var bubble = document.createElement("p");
+            // if(message.sender == userEmail){
+            //     bubble.className = "align-left";
+            // }
+            bubble.className = `chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`;
+            bubble.innerText = message.message;
+            chatAreaBody.appendChild(bubble);
+        })
+        // var chatAreaBody = document.getElementById("chatAreaBody");
+        // chatAreaBody.innerText = messages.chats[0].message;
+    }
 
-    return(
+    return (
         <div className="mainChatArea">
             <div className="chatAreaHeader">
                 <div className="chatAreaContactName">
-                    <Avatar src={avatar2}/>
+                    <Avatar src={avatar2} />
                     <div className="chatName">
                         <div classNmae="chatAreaInfo">{contactName}</div>
                     </div>
                 </div>
             </div>
-            <div className="chatAreaBody">
-                
+            <div className="chatAreaBody" id="chatAreaBody">
 
-                <p className={`chatAreaMessages  ${messages.sender==contactEmail && 'chatAreaMessageReceiver'} ${messages.sender!=contactEmail && 'chatAreaMessageMy'}`}>
-                   {messages.message}
-                </p>
-                
+                {/* <p className={`chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`}>
+                        First Sample Message
+                    </p> */}
             </div>
             <div className="chatAreaFooter">
                 <div className="sendMessageArea">
                     <Button>
-                        <ImageIcon style={{fontSize:25,color:"#0c2637"}}/>
+                        <ImageIcon style={{ fontSize: 25, color: "#0c2637" }} />
                     </Button>
                     <form className="formSendMessage">
-                        <input 
-                            value={input} 
-                            onChange={e=>setInput(e.target.value)} 
-                            type="text" placeholder="Send a Message..." className="sendMessage"/>
-                        <Button 
-                            onClick={sendMessage} 
-                            type="submit"><SendIcon style={{fontSize:28,color:"#0c2637"}}/></Button>
+                        <input
+                            value={input}
+                            onChange={e => setInput(e.target.value)}
+                            type="text" placeholder="Send a Message..." className="sendMessage" />
+                        <Button
+                            onClick={sendMessage}
+                            type="submit"><SendIcon style={{ fontSize: 28, color: "#0c2637" }} /></Button>
                     </form>
                 </div>
             </div>
