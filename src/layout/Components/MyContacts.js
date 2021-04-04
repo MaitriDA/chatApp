@@ -79,8 +79,16 @@ function MyContacts({ key, id, name, addNewContact }) {
             <div className="myContact" onClick={() => history.push(`/contact/${id}`)}>
                 <Avatar src={avatar}/>
                 <div className="myContactInfo">
+                <div className="NameTime">
                     <div className="myContactName">
                         {name}
+                    </div>
+                    <div className="lastMsgTime">
+                        Time
+                    </div>
+                </div>
+                    <div className="myContactLastMsg">
+                        Last Message
                     </div>
                 </div>
                 

@@ -9,11 +9,27 @@
     background-color: white;
 }
 .myContactName{
-    margin-left: 10px;
     font-size: 17px;
     font-weight: 500;
 }
 .addPeopleConatct{
     color: aliceblue;
     size: 50px;
+}
+.myContactLastMsg{
+    font-weight: lighter;
+    color: gray;
+}
+.myContactInfo{
+    margin-left: 20px;
+    width: 90%;
+}
+.lastMsgTime{
+    font-weight: lighter;
+    color: gray;
+}
+.NameTime{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
