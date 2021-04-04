@@ -12,6 +12,7 @@ import Vector1 from '../images/vector1.jpg';
 import fire from '../helper/db';
 import './common.css';
 import None from '../avatar/None.jpg';
+import firebase from 'firebase/app';
 
 const SignUp = (props) => {
 
@@ -20,16 +21,20 @@ const SignUp = (props) => {
 
 
     const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const [avatar, setAvatar] = useState(None);
     const handleName = (event) => {
         setName(event.target.value);
     }
     const handleEmail = (event) => {
         setEmail(event.target.value);
+    }
+    const handlePhoneNumber = (event) => {
+        setPhoneNumber(event.target.value);
     }
     const handlePassword = (event) => {
         setPassword(event.target.value);
@@ -50,8 +55,18 @@ const SignUp = (props) => {
                         .set({
                             name:name,
                             email:email,
-                            avatar:None
+                            avatar:None,
+                            phoneNumber:phoneNumber
                         })
+                    db.collection('Users')
+                    .doc('allusers')
+                    .update({
+                        "emails": firebase.firestore.FieldValue.arrayUnion(email),
+                        "phones":firebase.firestore.FieldValue.arrayUnion(phoneNumber),
+                        "names":firebase.firestore.FieldValue.arrayUnion(name),
+                        "photo_urls":firebase.firestore.FieldValue.arrayUnion(avatar),
+    
+                    })
                 }
                 setLoading(false);
             }).catch((error) => {
@@ -120,13 +135,26 @@ const SignUp = (props) => {
                                     name="name"
                                     size="small"
                                     value={name}
-                                    
                                     validators={['required']}
                                     errorMessages={['this field is required']}
                                     autoComplete="off"
                                 />
                                 <TextValidator
-                            className={classes.textField}
+                                className={classes.textField}
+                                    variant="outlined"
+                                    fullWidth
+                                    label="Phone Number"
+                                    onChange={handlePhoneNumber}
+                                    name="name"
+                                    size="small"
+                                    value={phoneNumber}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                    autoComplete="off"
+                                />
+                                
+                                <TextValidator
+                                className={classes.textField}
                                     variant="outlined"
                                     margin="normal"
                                     fullWidth
@@ -134,7 +162,6 @@ const SignUp = (props) => {
                                     onChange={handlePassword}
                                     name="password"
                                     type="password"
-                                    
                                     size="small"
                                     value={password}
                                     validators={['required',]}
@@ -155,6 +182,7 @@ const SignUp = (props) => {
                                     value={confirmPassword}
                                     autoComplete="off"
                                 />
+                                
                                 {loading ? (
                                     <ScaleLoader className={classes.loading}
                                         size={'50px'}
@@ -186,6 +214,7 @@ const SignUp = (props) => {
 const useStyles = makeStyles((theme) => ({
     textField: {
         width: '300px',
+        marginTop: '10px'
     },
     submit: {
         background: 'linear-gradient(45deg, #0c2637 30%, #0c2637 90%)',

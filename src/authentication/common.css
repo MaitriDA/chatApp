@@ -39,18 +39,18 @@
     margin: auto;
 }
 .cardSignUp{
-    width: 800px;
-    height:440px;
+    width: 860px;
+    height:500px;
     margin-top: 60px;
     background-color: rgb(245, 245, 245);
 }
 .signUp{
-    height: 400px;
+    height: 460px;
     margin-right: 20px;
-    width: 385px;
+    width: 425px;
 }
 .imgSignUp{
-    height: 400px;
+    height: 460px;
     width: 400px;
 }
 Button{
