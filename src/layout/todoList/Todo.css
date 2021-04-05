@@ -1,0 +1,82 @@
+.container {
+    margin-top: auto;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 40%;
+    min-height: 100px;
+    background: #feefec;
+    border: 3px solid #0c2637;
+    border-radius: 20px;  
+  }
+  
+  .body {
+    width: 80%;
+    padding: 15px 8px;
+    text-align: center;
+    color: #0c2637;
+  }
+  form {
+    padding: 5px;
+    text-align: center;
+    color:#0c2637;
+  }
+  
+  .todo-form {
+    text-align: center;
+  }
+  
+  label {
+    padding: 5px;
+    letter-spacing: 1px;
+   
+  }
+  input {
+    border-radius: 4px;
+    border: 1px solid #0c2637;
+    
+  }
+  
+  .todo {
+    padding: 5px 10px;
+    border: 1px solid #0c2637;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+  }
+  
+  .todo span {
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .todo button {
+    float: right;
+    margin-right: 15px;
+    color: #0c2637;
+    background-color: transparent;
+    padding: 3px 7;
+    border: none;
+    border: 1px solid #0c2637;
+    border-radius: 2px;
+    margin-top: 4px;
+    
+  }
+  form button {
+    color: #0c2637;
+    background-color:transparent ;
+    padding: 3px 7;
+    border: none;
+    border: 1px solid #0c2637;
+    border-radius: 2px;
+    margin-top: 4px;
+    
+  }
+  
+  .form-edit input {
+    padding: 10px 5px;
+    border-top: none;
+    border-right:  none;
+    border-left: none;
+    
+  }
