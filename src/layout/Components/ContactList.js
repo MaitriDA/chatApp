@@ -32,7 +32,6 @@ const ContactList=(props)=>{
             console.log('Error');
         }
     },[])
-    console.log(Contacts)
     return(
         <>
        <div className="mainContactList">
