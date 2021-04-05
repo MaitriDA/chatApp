@@ -18,7 +18,8 @@ function MyContacts({ key, id, name, addNewContact }) {
 
     const db = fire.firestore();
     const history = useHistory();
-
+    const[demo,setDemo]=useState([]);
+    
     const CreateContact = () => {
         const userEmail = JSON.parse(localStorage.getItem("user")).email;
         const contact = prompt("Please Enter name");
@@ -36,6 +37,13 @@ function MyContacts({ key, id, name, addNewContact }) {
                     })
             }
         }
+        
+    db.collection('Users')
+    .doc('allusers')
+    .onSnapshot(snapshot => (
+        setDemo(snapshot.data())
+    ));
+    console.log(demo);
         db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
@@ -53,6 +61,14 @@ function MyContacts({ key, id, name, addNewContact }) {
                 })
 
     };
+
+    const[demo,setDemo]=useState([]);
+    db.collection('Users')
+    .doc('allusers')
+    .onSnapshot(snapshot => (
+        setDemo(snapshot.data())
+    ));
+    console.log(demo);
     const [avatar,setAvatar]=useState('None');
 
     if (localStorage.getItem ('user') !== null) {
