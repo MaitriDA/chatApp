@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Profile from '../Icons/Profile';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import ScheduleMessage from '../Icons/ScheduleMessage';
+import AboutUs from '../Icons/AboutUs';
 
 const IconPanel=(props)=>{
     const LightTooltip = withStyles((theme: Theme) => ({
@@ -38,11 +39,7 @@ const IconPanel=(props)=>{
               </Button>
             </LightTooltip>
             <ScheduleMessage/>
-            <LightTooltip title="About Us" placement="right">
-              <Button>
-                <InfoRounded style={{fontSize:35,color:"white"}}/>
-              </Button>
-            </LightTooltip>
+            <AboutUs/>
             
         </div>
     );
