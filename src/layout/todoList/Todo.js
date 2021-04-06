@@ -14,6 +14,7 @@ const Todo = () => {
   const db=fire.firestore();
   const [todos, setTodos] = useState ([]);
   const [todo, setTodo] = useState ('');
+  const [todoFire,setTodoFire]=useState([]);
   const classes = useStyles ();
 
   useEffect (() => {
@@ -45,11 +46,25 @@ const Todo = () => {
       task_title:todo,
       task_time:new Date(),
     })
+    db.collection('Users')
+      .doc(userEmail)
+      .collection('To-Do')
+      .onSnapshot(snapshot=>(
+        setTodoFire(snapshot.docs.map((doc)=>({
+          id: doc.id,
+          title:doc.data().task_title,
+          time:doc.data().task_time,
+        })
+      ))
+    ))
+
+            
     localStorage.setItem ('items', JSON.stringify ([...todos, todoObject]));
     setTodos ([...todos, todoObject]);
     setTodo ('');
   };
 
+  console.log(todoFire)
   const completedTodo = index => {
     const newList = todos.map (list => {
       if (list.id === index) {
@@ -148,6 +163,14 @@ const Todo = () => {
                       todos={todos}
                       key={todoItem.id}
                     />
+                    /* Maitri's Code - firebase
+                    todoFire.map (todoItem => {
+                    return (
+                    <Item
+                      id={todoItem.id}
+                      task={todo.title}
+                      time={todo.time}
+                    /> */
                   );
                 })}
               </div>
