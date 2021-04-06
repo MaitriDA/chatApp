@@ -54,6 +54,17 @@ function MyContacts({key, id, name, addNewContact}) {
                         timestamp: new Date (),
                     }),
                 });
+                db.collection ('Users')
+                .doc (email)
+                .collection ('Chats')
+                .doc (userEmail)
+                .update ({
+                    chats: firebase.firestore.FieldValue.arrayUnion ({
+                        message: ' ',
+                        sender: userEmail,
+                        timestamp: new Date (),
+                    }),
+                });
         } 
         else {
             alert ('User not found');
