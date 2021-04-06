@@ -6,6 +6,9 @@ import {Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+
 
 const Todo = () => {
   const [todos, setTodos] = useState ([]);
@@ -79,7 +82,7 @@ const Todo = () => {
                 />
               </div>
               <button type="submit" className="AddButton">
-                <AddIcon />
+                <AddIcon style={{fontSize:40}} />
               </button>
             </div>
           </form>

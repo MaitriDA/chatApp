@@ -60,9 +60,16 @@ form {
 }
 .inputField{
   padding: 5px;
-  border: 2px solid red;
+  border: 1px solid gray;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
+}
+.inputField{
+  background-color: white;
 }
 .inputTitleDes{
   text-align: center;
@@ -72,16 +79,22 @@ form {
   font-size: 15px;
   border-bottom:1px solid gray;
   margin-top:7px;
-  width: 85%;
+  width: 95%;
   outline: none;
+  margin-bottom: 5px;
 }
 .inputText{
-  border: 1px solid red;
+  width: 87%;
 }
 .AddButton{
-  background-color: Transparent;
+    background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;
+    font-size: 35px;
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    margin-top: 15px;
 }
