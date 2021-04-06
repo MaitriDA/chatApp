@@ -6,9 +6,12 @@ import {Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import PersonIcon from '@material-ui/icons/Person';
 
 const Todo = () => {
   const [todos, setTodos] = useState ([]);
@@ -54,43 +57,83 @@ const Todo = () => {
     setTodos (newList);
   };
 
+  const [open, setOpen] = React.useState (false);
+  const handleClickOpen = () => {
+    setOpen (true);
+  };
+
+  const handleClose = () => {
+    setOpen (false);
+  };
+
   return (
     <div className="container">
-      {' '}
+
       <div className="body">
-        {' '}
-        <h3>What To-Do?</h3>
+
         <div className="todo-form">
-          {' '}
-          <form onSubmit={handleSubmit} className="inputButton">
-            <div className="inputField">
-              <div className="inputText">
-                <input
-                  className="inputTitleDes"
-                  placeholder="Title"
-                  type="text"
-                  value={todo}
-                  name="todo"
-                  onChange={handleChange}
-                />
-                <input
-                  className="inputTitleDes"
-                  placeholder="Description"
-                  type="text"
-                  value={todo}
-                  name="todo"
-                />
-              </div>
-              <button type="submit" className="AddButton">
-                <AddIcon style={{fontSize:40}} />
-              </button>
+
+          <div className="todoFlex">
+            <div className="todoTitle">
+              What To-Do ?
             </div>
-          </form>
+            <div>
+              <Button onClick={handleClickOpen}>
+                <AddIcon style={{fontSize: 35, color: 'black'}} />
+              </Button>
+            </div>
+          </div>
+            <div className="line"></div>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogContent>
+              <DialogContentText>
+                <div className="dialog">
+                  <div>Add To-dos..</div>
+                  <form onSubmit={handleSubmit}>
+
+                    <div className="Title">
+                      <TextField
+                        id="standard-basic"
+                        label="Title"
+                        style={{width: 270}}
+                        type="text"
+                        value={todo}
+                        name="todo"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="Description">
+                      <TextField
+                        id="standard-basic"
+                        label="Description"
+                        style={{width: 270}}
+                      />
+                    </div>
+                    <div className="toDoBtn">
+                    <Button type="submit" className={classes.submit} onClick={handleClose}>
+                      Done
+                    </Button>
+                    <Button className={classes.submit} onClick={handleClose}>
+                      Cancel
+                    </Button>
+                    </div>
+                  </form>
+
+                </div>
+                
+              </DialogContentText>
+            </DialogContent>
+          </Dialog>
+
         </div>
         <div>
           {todos.length > 0
             ? <div className="todo-box">
-                <h3>To-Do list</h3>
+
                 {todos.map (todoItem => {
                   return (
                     <Item
@@ -120,5 +163,11 @@ const useStyles = makeStyles (theme => ({
     color: '#feefec',
     width: '100px',
   },
+  submit: {
+    background: 'linear-gradient(45deg, #0c2637 30%, #0c2637 90%)',
+    color: '#feefec',
+    width: '100px',
+},
 }));
 export default Todo;
+
