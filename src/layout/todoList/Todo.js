@@ -5,17 +5,14 @@ import AddIcon from '@material-ui/icons/Add';
 import {Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import PersonIcon from '@material-ui/icons/Person';
+import fire from '../../helper/db';
 
 const Todo = () => {
+  const db=fire.firestore();
   const [todos, setTodos] = useState ([]);
-
   const [todo, setTodo] = useState ('');
   const classes = useStyles ();
 
@@ -40,6 +37,14 @@ const Todo = () => {
       task: todo,
       completed: false,
     };
+    const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+    db.collection('Users')
+    .doc(userEmail)
+    .collection('To-Do')
+    .add({
+      task_title:todo,
+      task_time:new Date(),
+    })
     localStorage.setItem ('items', JSON.stringify ([...todos, todoObject]));
     setTodos ([...todos, todoObject]);
     setTodo ('');
