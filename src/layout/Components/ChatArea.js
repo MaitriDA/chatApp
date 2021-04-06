@@ -51,7 +51,6 @@ function ChatArea() {
         }
     }, [contactEmail])
 
-    console.log(messages)
     const sendMessage = async (e) => {
         e.preventDefault();
         console.log('You typed>>', input);
@@ -99,7 +98,6 @@ function ChatArea() {
 
     const createMessagesBubble = (snapshot) => {
         var messages = snapshot.data();
-        console.log(messages);
         var chatAreaBody = document.getElementById("chatAreaBody");
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
@@ -127,10 +125,6 @@ function ChatArea() {
                 </div>
             </div>
             <div className="chatAreaBody" id="chatAreaBody">
-
-                {/* <p className={`chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`}>
-                        First Sample Message
-                    </p> */}
             </div>
             <div className="chatAreaFooter">
                 <div className="sendMessageArea">
