@@ -20,15 +20,25 @@ function MyContacts({key, id, name, addNewContact}) {
   const db = fire.firestore ();
   const history = useHistory ();
   const [demo, setDemo] = useState ([]);
-  const [email, setEmail] = useState ();
+  const [email,setEmail]=useState();
   const [userName, setUserName] = useState ();
 
   const createContact = () => {
-    db
-      .collection ('Users')
-      .doc ('allusers')
+    
+    db.collection ('Users')
+    .doc ('allusers')
       .onSnapshot (snapshot => setDemo (snapshot.data ().emails));
         const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+        db.collection('Users')
+        .doc(userEmail)
+        .get()
+        .then(function(doc){
+            if(doc.exists){
+                setUserName(doc.data().name);
+            }
+        }).catch(function(error){
+            console.log("Error getting document: ",error)
+        });
         const contact = prompt ('Please Enter name');
         const email = prompt ('Please enter his email');
         setEmail (email);
@@ -42,6 +52,14 @@ function MyContacts({key, id, name, addNewContact}) {
                 .doc (email)
                 .set ({
                     name: contact,
+                });
+
+            db.collection ('Users')
+                .doc (email)
+                .collection ('Chats')
+                .doc (userEmail)
+                .set ({
+                    name: userName,
                 });
             db.collection ('Users')
                 .doc (userEmail)

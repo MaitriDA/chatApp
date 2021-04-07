@@ -23,7 +23,6 @@ function ChatArea() {
     const [messages, setMessages] = useState([]);
     const db = fire.firestore();
 
-
     useEffect(async () => {
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
@@ -102,16 +101,11 @@ function ChatArea() {
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
             var bubble = document.createElement("p");
-            // if(message.sender == userEmail){
-            //     bubble.className = "align-left";
-            // }
             bubble.className = `chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`;
             bubble.innerText = message.message;
             chatAreaBody.appendChild(bubble);
             setInput("");
         })
-        // var chatAreaBody = document.getElementById("chatAreaBody");
-        // chatAreaBody.innerText = messages.chats[0].message;
     }
 
     return (
