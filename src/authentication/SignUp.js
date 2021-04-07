@@ -13,6 +13,7 @@ import fire from '../helper/db';
 import './common.css';
 import None from '../avatar/None.jpg';
 import firebase from 'firebase/app';
+import {validName} from './regex.jsx';
 
 const SignUp = (props) => {
 
@@ -27,8 +28,14 @@ const SignUp = (props) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [avatar, setAvatar] = useState(None);
+    const [nameErr, setNameErr] = useState(false);
+    const [pwdError, setPwdError] = useState(false);
+
     const handleName = (event) => {
         setName(event.target.value);
+        if (!validName.test(name)) {
+            setNameErr(true);
+        }
     }
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -139,6 +146,7 @@ const SignUp = (props) => {
                                     errorMessages={['this field is required']}
                                     autoComplete="off"
                                 />
+                                {nameErr && <p>Your name is invalid</p>}
                                 <TextValidator
                                 className={classes.textField}
                                     variant="outlined"
@@ -203,6 +211,7 @@ const SignUp = (props) => {
                             <Link onClick={props.toggle} className={classes.pointer} variant="body2">
                                 {"Already have an account? Login"}
                             </Link>
+                            
                         </ValidatorForm>
                     </CssBaseline>
                 </div>

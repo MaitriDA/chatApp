@@ -27,7 +27,7 @@ function MyContacts({key, id, name, addNewContact}) {
     
     db.collection ('Users')
     .doc ('allusers')
-      .onSnapshot (snapshot => setDemo (snapshot.data ().emails));
+      .onSnapshot (snapshot => setDemo (snapshot.data ().names));
         const userEmail = JSON.parse (localStorage.getItem ('user')).email;
         db.collection('Users')
         .doc(userEmail)
@@ -95,7 +95,7 @@ function MyContacts({key, id, name, addNewContact}) {
         console.log (demo.length);
         var i;
         for (i = 0; i < demo.length; i++) {
-            if (demo[i] == email) {
+            if (demo[i] == contact) {
             console.log ('Yes');
             return 'Yes';
         }

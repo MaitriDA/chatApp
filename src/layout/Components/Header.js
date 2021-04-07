@@ -4,6 +4,9 @@ import {AccountCircle} from '@material-ui/icons';
 import fire from '../../helper/db';
 import { render } from '@testing-library/react';
 import './Header.css';
+import Login from '../../authentication/LoginIn';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const Header=(props)=>{
     
@@ -17,6 +20,7 @@ const Header=(props)=>{
         localStorage.removeItem('user');
         props.setUserState();
         setAnchorEl(null);
+        window.history.pushState(null,window.location.href.match(/^.*\//),"/");
     }
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);

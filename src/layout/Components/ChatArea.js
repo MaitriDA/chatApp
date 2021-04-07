@@ -24,7 +24,7 @@ function ChatArea() {
     const db = fire.firestore();
 
     useEffect(async () => {
-        if (localStorage.getItem('user') !== null) {
+        // if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
 
             if (contactEmail) {
@@ -43,11 +43,11 @@ function ChatArea() {
                         createMessagesBubble(snapshot)
                     ))
             }
-        }
+        // }
 
-        else {
-            console.log('chat area error')
-        }
+        // else {
+        //     console.log('chat area error')
+        // }
     }, [contactEmail])
 
     const sendMessage = async (e) => {
