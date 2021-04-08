@@ -21,6 +21,12 @@ import avatar3 from '../../avatar/avatar3.jpg';
 import avatar4 from '../../avatar/avatar4.jpg';
 import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
+import abhay from '../Icons/abhay.jpeg';
+import Maitri from '../Icons/Maitri.jpeg';
+import Asa from '../Icons/Asa.jpeg';
+import Ruchika from '../Icons/Ruchika.jpeg';
+
+ 
 
 export default function AboutUs () {
   const avatarLst = ['None', 'avatar1'];
@@ -205,14 +211,19 @@ export default function AboutUs () {
           <DialogContentText
             style={{backgroundColor: 'white', borderRadius: '7px'}}
           >
-            <div className="aboutUsMain">
+            
+            <div class="aboutUs">
               <font color="#0c2637">
                 <h2>Hello from team ‘BAATEIN’ !</h2>
                 <p>
                   Hey there! We are so glad to see you :)
                   We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go!
+
                 </p>
-                <br />
+                </font>
+                </div>
+                <div className="Features">
+                <font color="#0c2637">
                 <h3>Our key features include-</h3>
                 <h4><b>Chatting with your friends.</b></h4>
                 <p>
@@ -236,12 +247,44 @@ export default function AboutUs () {
                 <p>
                   Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
                 </p>
+                <div className="Pics">
+            <img src={abhay} alt="abhay's pic"
+            style={{
+              height: '100px',
+              width: '100px',
+              border: '1px solid black',
+              
+            }}/>
+            <img src={Maitri} alt="abhay's pic"
+            style={{
+              height: '100px',
+              width: '100px',
+              border: '1px solid black',
+            }}/>
+            <img src={Asa} alt="abhay's pic"
+            style={{
+              height: '100px',
+              width: '100px',
+              border: '1px solid black',
+            }}/>
+            <img src={Ruchika} alt="abhay's pic"
+            style={{
+              height: '100px',
+              width: '100px',
+              border: '1px solid black',
+            }}/>
+            </div>
               </font>
             </div>
+            
+            <br/>
+            
+            
           </DialogContentText>
         </DialogContent>
       </Dialog>
-    </div>
+      </div>
+   
   );
 }
 
