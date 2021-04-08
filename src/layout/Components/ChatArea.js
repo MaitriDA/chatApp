@@ -22,7 +22,8 @@ function ChatArea() {
     const [contactName, setContactName] = useState('');
     const [messages, setMessages] = useState([]);
     const db = fire.firestore();
-
+    const [useremail,setUserEmail]=useState("");
+    const userEmail = JSON.parse(localStorage.getItem("user")).email;
     useEffect(async () => {
         // if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
@@ -55,6 +56,7 @@ function ChatArea() {
         console.log('You typed>>', input);
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
+            setUserEmail(userEmail);
             db.collection('Users')
                 .doc(userEmail)
                 .collection('Chats')
@@ -63,7 +65,6 @@ function ChatArea() {
                     "chats": firebase.firestore.FieldValue.arrayUnion(
                         {
                             "message": input,
-                            "receiver": contactEmail,
                             "sender": userEmail,
                             "timestamp": new Date(),
                         }
@@ -79,7 +80,6 @@ function ChatArea() {
                     "chats": firebase.firestore.FieldValue.arrayUnion(
                         {
                             "message": input,
-                            "receiver": contactEmail,
                             "sender": userEmail,
                             "timestamp": new Date(),
                         }
@@ -94,16 +94,24 @@ function ChatArea() {
         }
         console.log(contactEmail);
     }
-
+    
     const createMessagesBubble = (snapshot) => {
         var messages = snapshot.data();
         var chatAreaBody = document.getElementById("chatAreaBody");
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
             var bubble = document.createElement("p");
-            bubble.className = `chatAreaMessages  ${message.sender == contactEmail && 'chatAreaMessageReceiver'} ${message.sender != contactEmail && 'chatAreaMessageMy'}`;
+            bubble.className = `chatAreaMessages  ${message.sender == userEmail && 'chatAreaMessageMy'} ${message.sender != userEmail && 'chatAreaMessageReceiver'}`;
             bubble.innerText = message.message;
             chatAreaBody.appendChild(bubble);
+            
+            var timeH=new Date(message.timestamp*1000).getHours();
+            var timeM=new Date(message.timestamp*1000).getMinutes();
+            var bubbleTime=document.createElement("div");
+            bubbleTime.className=`chatAreaMessages  ${message.sender == userEmail && 'timeChatAreaMessageMy'} ${message.sender != userEmail && 'timeChatAreaMessageReceiver'}`;
+            bubbleTime.innerText=`${timeH}:${timeM}`;
+            chatAreaBody.appendChild(bubbleTime);
+
             setInput("");
         })
     }
