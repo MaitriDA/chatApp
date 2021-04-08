@@ -7,17 +7,15 @@
 }
 .AboutUsPics{
   width: 50%;
-  border: 2px solid red;
-  height: 500px;
+  padding:10px;
+  
 }
 .Features{
   width: 50%;
-  border: 2px solid red;
-  height: 500px;
+  padding: 10px;;
 }
 .Pics{
-  margin: auto;
-  width:50%;
-  padding:10px;
+  padding:30px;
   justify-content: space-evenly;
+  
 }

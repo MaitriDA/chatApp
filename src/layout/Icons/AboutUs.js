@@ -225,26 +225,36 @@ export default function AboutUs () {
             style={{
               height: '100px',
               width: '100px',
+              borderRadius: "50%",
               border: '1px solid black',
+              marginTop: '10px'
               
             }}/>
             <img src={Maitri} alt="abhay's pic"
             style={{
               height: '100px',
               width: '100px',
+              borderRadius: "50%",
               border: '1px solid black',
+              marginTop: '10px',
+              
             }}/>
             <img src={Asa} alt="abhay's pic"
             style={{
               height: '100px',
               width: '100px',
+              borderRadius: "50%",
               border: '1px solid black',
+              marginTop: '10px'
+
             }}/>
             <img src={Ruchika} alt="abhay's pic"
             style={{
               height: '100px',
               width: '100px',
+              borderRadius: "50%",
               border: '1px solid black',
+              
             }}/>
             </div>
               </div>
