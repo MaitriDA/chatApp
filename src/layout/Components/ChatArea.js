@@ -105,11 +105,14 @@ function ChatArea() {
             bubble.innerText = message.message;
             chatAreaBody.appendChild(bubble);
             
+            const monthA=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            var date=new Date(message.timestamp*1000).getDate();
+            var monthD=new Date(message.timestamp*1000).getMonth();
             var timeH=new Date(message.timestamp*1000).getHours();
             var timeM=new Date(message.timestamp*1000).getMinutes();
             var bubbleTime=document.createElement("div");
             bubbleTime.className=`chatAreaMessages  ${message.sender == userEmail && 'timeChatAreaMessageMy'} ${message.sender != userEmail && 'timeChatAreaMessageReceiver'}`;
-            bubbleTime.innerText=`${timeH}:${timeM}`;
+            bubbleTime.innerText=`${date} ${monthA[monthD]}  ${timeH}:${timeM}`;
             chatAreaBody.appendChild(bubbleTime);
 
             setInput("");

@@ -7,6 +7,8 @@ import './Header.css';
 import Login from '../../authentication/LoginIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
+import {Avatar} from '@material-ui/core';
+import Logo from '../../images/logo.jpeg';
 
 const Header=(props)=>{
     
@@ -44,8 +46,11 @@ const Header=(props)=>{
     }
     return(
             <div className="mainHeader">
+            <div className="Brand">
+            <img src={Logo} className="logo"/>
                 <div className="title">
                 BAATEIN
+                </div>
                 </div>
                 <div className="title UserName">Hello!! {UserName}</div>
                 <div onClick={handleClose} className="logOut">
