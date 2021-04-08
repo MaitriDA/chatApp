@@ -33,6 +33,10 @@ const ContactList=(props)=>{
                     ({
                         id: doc.id,
                         data:doc.data(),
+                        lastmsg:doc.data().chats[doc.data().chats.length-1].message,
+                        lastmsgTimeH:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getHours(),
+                        lastmsgTimeM:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getMinutes()
+                
                     })
                 ))
             ))
@@ -41,6 +45,7 @@ const ContactList=(props)=>{
             console.log('Error');
         }
     },[])
+    console.log(Contacts)
     return(
         <>
        <div className="mainContactList">
@@ -54,6 +59,9 @@ const ContactList=(props)=>{
                         key={Contact.id}    
                         id={Contact.id} 
                         name={Contact.data.name}
+                        lastmsg={Contact.lastmsg}
+                        lastmsgTimeH={Contact.lastmsgTimeH}
+                        lastmsgTimeM={Contact.lastmsgTimeM}
                     />
                 ))}
             </div>

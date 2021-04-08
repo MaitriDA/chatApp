@@ -17,16 +17,16 @@
     size: 50px;
 }
 .myContactLastMsg{
-    font-weight: lighter;
     color: gray;
+    font-size: 15px;
 }
 .myContactInfo{
     margin-left: 20px;
     width: 90%;
 }
 .lastMsgTime{
-    font-weight: lighter;
     color: gray;
+    font-size: 13px;
 }
 .NameTime{
     display: flex;

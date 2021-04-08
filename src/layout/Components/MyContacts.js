@@ -16,7 +16,7 @@ import avatar6 from '../../avatar/avatar6.jpg';
 import {KitchenTwoTone} from '@material-ui/icons';
 import {set} from 'shelljs';
 
-function MyContacts({key, id, name, addNewContact}) {
+function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewContact}) {
   const db = fire.firestore ();
   const history = useHistory ();
   const [demo, setDemo] = useState ([]);
@@ -121,6 +121,9 @@ function MyContacts({key, id, name, addNewContact}) {
                 console.log ('Error getting document: ', error);
             });
     }
+{/* <div>
+  {`${text.substring(0, MAX_LENGTH)}...`}<a href="#">Read more</a>
+</div> */}
 
   return !addNewContact
     ? <Router>
@@ -135,11 +138,11 @@ function MyContacts({key, id, name, addNewContact}) {
                 {name}
               </div>
               <div className="lastMsgTime">
-                Time
+                {lastmsgTimeH}:{lastmsgTimeM}
               </div>
             </div>
             <div className="myContactLastMsg">
-              Last Message
+            {`${lastmsg.substring(0, 15)}...`}
             </div>
           </div>
 
