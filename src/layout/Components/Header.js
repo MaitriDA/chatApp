@@ -15,7 +15,7 @@ const Header=(props)=>{
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const [UserName,setUserName]=React.useState('');
-
+    const [avatar,setAvatar]=React.useState('');
     const handleClose = () => {
         localStorage.removeItem('user');
         props.setUserState();
@@ -33,7 +33,6 @@ const Header=(props)=>{
         .then(function(doc){
             if(doc.exists){
                 var UserName=doc.data().name;
-                console.log('USERNAME',UserName);
                 setUserName(UserName);
             }
             else{

@@ -4,8 +4,8 @@
 }
 .mainHome{
     background-color: #0c2637;
-    width: 99.1%;
-    height: 98.2vh;
+    width: 100%;
+    height: 100vh;
     border: 1px solid gray;
     padding: 5px;
     display: grid;

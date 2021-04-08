@@ -201,154 +201,31 @@ export default function AboutUs () {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
         fullWidth
-        maxWidth="sm"
+        maxWidth="md"
       >
         <DialogContent style={{backgroundColor: '#feefec'}}>
           <DialogContentText
             style={{backgroundColor: 'white', borderRadius: '15px'}}
           >
+          
+            Hello from team ‘BAATEIN’ !
 
-            <div className="profileMain">
-              <div className="profilePicture">
-                <img src={avatar} className="picture"/>
-                <div className="avatar">
-                  <div className="avatarHeading">AVATAR</div>
-                  <div className="changedp">
-                    <Button onClick={handleAvatar1}>
-                      <Avatar
-                        src={avatar1}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                    <Button onClick={handleAvatar2}>
-                      <Avatar
-                        src={avatar2}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                    <Button onClick={handleAvatar3}>
-                      <Avatar
-                        src={avatar3}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                    <Button onClick={handleAvatar4}>
-                      <Avatar
-                        src={avatar4}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                    <Button onClick={handleAvatar5}>
-                      <Avatar
-                        src={avatar5}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                    <Button onClick={handleAvatar6}>
-                      <Avatar
-                        src={avatar6}
-                        style={{
-                          height: '45px',
-                          width: '45px',
-                          border: '1px solid black',
-                        }}
-                      />
-                    </Button>
-                  </div>
-                </div>
-                <div className="customImage">
-                  <Button onClick={handleClose} className={classes.submit}>
-                    Custom image
-                  </Button>
-                </div>
-              </div>
-              <div className="information">
-                <div className="profileInput">
-                  <div className="profileHeading">My Profile</div>
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="User Name"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the User Name"
-                    value={userName}
-                  />
-                </div>
-                <div className="profileInput">
+            Hey there! We are so glad to see you :)
+            We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go! 
 
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="Email"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the email"
-                    value={userEmail}
-                  />
-                </div>
-                <div className="profileInput">
+            Our key features include-
+            Chatting with your friends.
+            Make the best of your time here with us with our beautiful UI and flawless user experience. 
 
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="About Me"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the Bio"
-                  />
-                </div>
-                <div className="profileInput">
+            To-Do list
+            Tick off your editable ToDo list and make progress on your projects, assignments or any other tasks. Delete and edit them as you like it!
 
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="Contact Number"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the Mobile Number"
-                  />
-                </div>
+            Schedule your messages:
+            Boost your productivity, stay organized and streamline all your conversations. This feature helps sending messages at the time you have scheduled beforehand. Also to make sure you don't forget to wish people on their birthdays ;)
+              
+            How do we aspire to grow?
+            Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
 
-                  <div className="profileButton">
-                    <DialogActions>
-                      <div className="buttonArea">
-
-                        <div className="cancelButton">
-                          <Button onClick={handleClose} className={classes.submit}>
-                            Cancel
-                          </Button>
-                        </div>
-                        <div className="doneButton">
-                          <Button onClick={handleClose} className={classes.submit}>
-                            Done
-                          </Button>
-                        </div>
-                      </div>
-                    </DialogActions>
-                  </div>
-              </div>
-            </div>
 
           </DialogContentText>
         </DialogContent>

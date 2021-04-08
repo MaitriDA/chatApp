@@ -20,9 +20,10 @@ function MyContacts({key, id, name, addNewContact}) {
   const db = fire.firestore ();
   const history = useHistory ();
   const [demo, setDemo] = useState ([]);
-  const [email,setEmail]=useState();
-  const [userName, setUserName] = useState ();
+  const [email,setEmail]=useState('');
+  const [userName, setUserName] = useState ('');
 
+  console.log(userName)
   const createContact = () => {
     
     db.collection ('Users')
@@ -105,7 +106,7 @@ function MyContacts({key, id, name, addNewContact}) {
     if (localStorage.getItem ('user') !== null) {
         const ls = JSON.parse (localStorage.getItem ('user')).email;
         db.collection ('Users')
-            .doc (ls)
+            .doc ('demo@gmail.com')
             .get ()
             .then (function (doc) {
                 if (doc.exists) {

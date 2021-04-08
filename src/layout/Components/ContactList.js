@@ -4,6 +4,15 @@ import React, { useEffect, useState } from 'react';
 import fire from '../../helper/db';
 import './ContactList.css';
 import MyContacts from './MyContacts';
+import {Avatar} from '@material-ui/core';
+
+import None from '../../avatar/None.jpg';
+import avatar1 from '../../avatar/avatar1.jpg';
+import avatar2 from '../../avatar/avatar2.jpg';
+import avatar3 from '../../avatar/avatar3.jpg';
+import avatar4 from '../../avatar/avatar4.jpg';
+import avatar5 from '../../avatar/avatar5.jpg';
+import avatar6 from '../../avatar/avatar6.jpg';
 
 
 //'Constcts' stores the array of contacts(email,name,etc) of the logged in user.
@@ -44,7 +53,8 @@ const ContactList=(props)=>{
                     <MyContacts 
                         key={Contact.id}    
                         id={Contact.id} 
-                        name={Contact.data.name}/>
+                        name={Contact.data.name}
+                    />
                 ))}
             </div>
        </div>
