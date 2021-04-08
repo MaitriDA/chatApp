@@ -203,30 +203,30 @@ export default function AboutUs () {
         fullWidth
         maxWidth="md"
       >
-        <DialogContent style={{backgroundColor: '#feefec'}}>
+        <DialogContent style={{backgroundColor: 'white'}}>
           <DialogContentText
-            style={{backgroundColor: 'white', borderRadius: '15px'}}
+            style={{backgroundColor: '#feefec', borderRadius: '7px'}}
           >
-          
-            Hello from team ‘BAATEIN’ !
-
-            Hey there! We are so glad to see you :)
-            We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go! 
-
-            Our key features include-
-            Chatting with your friends.
-            Make the best of your time here with us with our beautiful UI and flawless user experience. 
-
-            To-Do list
-            Tick off your editable ToDo list and make progress on your projects, assignments or any other tasks. Delete and edit them as you like it!
-
-            Schedule your messages:
-            Boost your productivity, stay organized and streamline all your conversations. This feature helps sending messages at the time you have scheduled beforehand. Also to make sure you don't forget to wish people on their birthdays ;)
-              
-            How do we aspire to grow?
-            Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
-
-
+        <div>
+          <font color="#0c2637">
+        <h2>Hello from team ‘BAATEIN’ !</h2>
+        <p>Hey there! We are so glad to see you :)
+We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go!</p>
+      <br/>
+      <h3>Our key features include-</h3>
+      <h4><b>Chatting with your friends.</b></h4>
+<p>Make the best of your time here with us with our beautiful UI and flawless user experience. </p>
+      <h4><b>To-Do list</b></h4>
+      <p>Tick off your <b>editable</b> ToDo list and make progress on your projects,assignments or any other tasks. Delete and edit them as you like it!</p>
+      <h4><b>Schedule your messages:</b></h4>
+      <p>Boost your productivity, stay organized and streamline all your conversations. This feature helps sending messages at the time you have scheduled beforehand. Also to make sure you don't forget to wish people on their birthdays ;)
+</p>
+<br/>
+    <h3>How do we aspire to grow?</h3>
+    <p>Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
+</p>
+</font>
+      </div>
           </DialogContentText>
         </DialogContent>
       </Dialog>
