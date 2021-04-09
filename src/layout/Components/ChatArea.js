@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import ImageIcon from '@material-ui/icons/Image';
 import SendIcon from '@material-ui/icons/Send';
 
+import None from '../../avatar/None.jpg';
 import avatar1 from '../../avatar/avatar1.jpg';
 import avatar2 from '../../avatar/avatar2.jpg';
 import avatar3 from '../../avatar/avatar3.jpg';
@@ -23,7 +24,7 @@ function ChatArea() {
     const [messages, setMessages] = useState([]);
     const db = fire.firestore();
     const [useremail,setUserEmail]=useState("");
-    const [avatar, setAvatar] = useState (avatar1);
+    const [avatar, setAvatar] = useState (None);
     const userEmail = JSON.parse(localStorage.getItem("user")).email;
     useEffect(async () => {
         // if (localStorage.getItem('user') !== null) {
