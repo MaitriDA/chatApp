@@ -22,7 +22,19 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
   const [demo, setDemo] = useState ([]);
   const [email,setEmail]=useState('');
   const [userName, setUserName] = useState ('');
+  const [avatar, setAvatar] = useState (avatar1);
 
+  const handleAvatar=(id)=>{
+    db.collection('Users')
+    .doc(id)
+    .get()
+    .then(function(doc){
+      if(doc.exists){
+        var avatarName=doc.data().avatar;
+        setAvatar(avatarName);
+      }
+    })
+  }
   console.log(userName)
   const createContact = () => {
     
@@ -102,25 +114,6 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
         }
         }
     };
-    const [avatar, setAvatar] = useState ('None');
-    if (localStorage.getItem ('user') !== null) {
-        const ls = JSON.parse (localStorage.getItem ('user')).email;
-        db.collection ('Users')
-            .doc ('demo@gmail.com')
-            .get ()
-            .then (function (doc) {
-                if (doc.exists) {
-                    var avatarName = doc.data ().avatar;
-                    setAvatar (avatarName);
-                } 
-                else {
-                    console.log ('No such Document found');
-                }
-            })
-            .catch (function (error) {
-                console.log ('Error getting document: ', error);
-            });
-    }
 {/* <div>
   {`${text.substring(0, MAX_LENGTH)}...`}<a href="#">Read more</a>
 </div> */}
@@ -131,7 +124,7 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
           className="myContact"
           onClick={() => history.push (`/contact/${id}`)}
         >
-          <Avatar src={avatar} />
+          <Avatar src={avatar} onClick={handleAvatar(id)}/>
           <div className="myContactInfo">
             <div className="NameTime">
               <div className="myContactName">

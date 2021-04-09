@@ -21,6 +21,7 @@ import avatar6 from '../../avatar/avatar6.jpg';
 // The database is accessed through userEmail to get only the contact of the logged in user.
 const ContactList=(props)=>{
     const [Contacts,setContact]=useState([]);
+
     useEffect(()=>{
         if(localStorage.getItem('user')!==null){
             const userEmail=JSON.parse(localStorage.getItem("user")).email;
@@ -33,9 +34,11 @@ const ContactList=(props)=>{
                     ({
                         id: doc.id,
                         data:doc.data(),
+                        length:doc.data().chats.length,
                         lastmsg:doc.data().chats[doc.data().chats.length-1].message,
                         lastmsgTimeH:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getHours(),
                         lastmsgTimeM:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getMinutes()
+                        
                 
                     })
                 ))
