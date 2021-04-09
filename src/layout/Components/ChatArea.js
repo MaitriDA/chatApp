@@ -23,6 +23,7 @@ function ChatArea() {
     const [messages, setMessages] = useState([]);
     const db = fire.firestore();
     const [useremail,setUserEmail]=useState("");
+    const [avatar, setAvatar] = useState (avatar1);
     const userEmail = JSON.parse(localStorage.getItem("user")).email;
     useEffect(async () => {
         // if (localStorage.getItem('user') !== null) {
@@ -37,6 +38,15 @@ function ChatArea() {
                         setContactName(snapshot.data().name)
                     ));
                 db.collection('Users')
+                    .doc(contactEmail)
+                    .get()
+                    .then(function(doc){
+                      if(doc.exists){
+                        var avatarName=doc.data().avatar;
+                        setAvatar(avatarName);
+                      }
+                    })
+                db.collection('Users')
                     .doc(userEmail)
                     .collection('Chats')
                     .doc(contactEmail)
@@ -50,7 +60,6 @@ function ChatArea() {
         //     console.log('chat area error')
         // }
     }, [contactEmail])
-
     const sendMessage = async (e) => {
         e.preventDefault();
         console.log('You typed>>', input);
@@ -123,7 +132,7 @@ function ChatArea() {
         <div className="mainChatArea">
             <div className="chatAreaHeader">
                 <div className="chatAreaContactName">
-                    <Avatar src={avatar2} />
+                    <Avatar src={avatar}/>
                     <div className="chatName">
                         <div classNmae="chatAreaInfo">{contactName}</div>
                     </div>
