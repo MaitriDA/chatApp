@@ -14,13 +14,6 @@ import './AboutUs.css';
 import fire from '../../helper/db';
 import {Avatar} from '@material-ui/core';
 
-import None from '../../avatar/None.jpg';
-import avatar1 from '../../avatar/avatar1.jpg';
-import avatar2 from '../../avatar/avatar2.jpg';
-import avatar3 from '../../avatar/avatar3.jpg';
-import avatar4 from '../../avatar/avatar4.jpg';
-import avatar5 from '../../avatar/avatar5.jpg';
-import avatar6 from '../../avatar/avatar6.jpg';
 import abhay from '../Icons/abhay.jpeg';
 import Maitri from '../Icons/Maitri.jpeg';
 import Asa from '../Icons/Asa.jpeg';
@@ -54,142 +47,7 @@ export default function AboutUs () {
   const [userEmail, setUserEmail] = useState ('');
   const [avatar, setAvatar] = useState ('None');
 
-  const handleAvatar1 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar1,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar2 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar2,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar3 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar3,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar4 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar4,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar5 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar5,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar6 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar6,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  if (localStorage.getItem ('user') !== null) {
-    const ls = JSON.parse (localStorage.getItem ('user')).email;
-    db
-      .collection ('Users')
-      .doc (ls)
-      .get ()
-      .then (function (doc) {
-        if (doc.exists) {
-          var UserName = doc.data ().name;
-          var avatarName = doc.data ().avatar;
-          console.log ('USERNAME', UserName);
-          setUserName (UserName);
-          setUserEmail (ls);
-          setAvatar (avatarName);
-        } else {
-          console.log ('No such Document found');
-        }
-      })
-      .catch (function (error) {
-        console.log ('Error getting document: ', error);
-      });
-  }
+  
 
   return (
     <div>
@@ -222,10 +80,35 @@ We are a team of self learned passionate developers who aspire to perk up ordina
                   </p>
                 </font>
                 <div className="Pics">
-            <img src={abhay} alt="abhay's" />
-            <img src={Maitri} alt="abhay's pic"/>
-            <img src={Asa} alt="abhay's pic"/>
-            <img src={Ruchika} alt="abhay's pic"/>
+            <img src={abhay} alt="abhay's"
+           style={{
+            height: '150px',
+            width: '150px',
+            borderRadius: '50%',
+            border: '1px solid black',
+          }}
+           />
+            <img src={Maitri} alt="abhay's pic"
+             style={{
+              height: '150px',
+              width: '150px',
+              borderRadius: '50%',
+              border: '1px solid black',
+            }}/>
+            <img src={Asa} alt="abhay's pic"
+             style={{
+              height: '150px',
+              width: '150px',
+              borderRadius: '50%',
+              border: '1px solid black',
+            }}/>
+            <img src={Ruchika} alt="abhay's pic"
+             style={{
+              height: '150px',
+              width: '150px',
+              borderRadius: '50%',
+              border: '1px solid black',
+            }}/>
             </div>
               </div>
               <div className="Features">
