@@ -39,7 +39,6 @@ const ContactList=(props)=>{
                         lastmsgTimeH:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getHours(),
                         lastmsgTimeM:new Date(doc.data().chats[doc.data().chats.length-1].timestamp*1000).getMinutes()
                         
-                
                     })
                 ))
             ))

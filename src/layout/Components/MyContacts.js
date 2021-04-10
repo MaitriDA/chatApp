@@ -80,8 +80,19 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
                 .doc (email)
                 .update ({
                     chats: firebase.firestore.FieldValue.arrayUnion ({
-                        message: ' ',
-                        sender: userEmail,
+                        message: 'Hello from baatein team',
+                        sender: 'Team',
+                        timestamp: new Date (),
+                    }),
+                });
+                db.collection ('Users')
+                .doc (userEmail)
+                .collection ('Chats')
+                .doc (email)
+                .update ({
+                    chats: firebase.firestore.FieldValue.arrayUnion ({
+                        message: 'You can starting here',
+                        sender: 'Team',
                         timestamp: new Date (),
                     }),
                 });
@@ -91,8 +102,19 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
                 .doc (userEmail)
                 .update ({
                     chats: firebase.firestore.FieldValue.arrayUnion ({
-                        message: ' ',
-                        sender: userEmail,
+                        message: 'Hello from baatein team',
+                        sender: 'Team',
+                        timestamp: new Date (),
+                    }),
+                });
+                db.collection ('Users')
+                .doc (email)
+                .collection ('Chats')
+                .doc (userEmail)
+                .update ({
+                    chats: firebase.firestore.FieldValue.arrayUnion ({
+                        message: 'You can starting here',
+                        sender: 'Team',
                         timestamp: new Date (),
                     }),
                 });

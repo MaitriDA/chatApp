@@ -56,9 +56,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar1
 
         })
@@ -75,9 +73,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar2
 
         })
@@ -94,9 +90,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar3
 
         })
@@ -113,9 +107,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar4
 
         })
@@ -132,9 +124,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar5
 
         })
@@ -151,9 +141,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar6
 
         })
