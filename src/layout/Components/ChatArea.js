@@ -111,7 +111,7 @@ function ChatArea() {
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
             var bubble = document.createElement("p");
-            bubble.className = `chatAreaMessages  ${message.sender == userEmail && 'chatAreaMessageMy'} ${message.sender != userEmail && 'chatAreaMessageReceiver'}`;
+            bubble.className = `chatAreaMessages  ${message.sender == userEmail && 'chatAreaMessageMy'} ${message.sender != userEmail && 'chatAreaMessageReceiver'} ${message.sender == 'Team' && 'team'}`;
             bubble.innerText = message.message;
             chatAreaBody.appendChild(bubble);
             
@@ -121,7 +121,7 @@ function ChatArea() {
             var timeH=new Date(message.timestamp*1000).getHours();
             var timeM=new Date(message.timestamp*1000).getMinutes();
             var bubbleTime=document.createElement("div");
-            bubbleTime.className=`chatAreaMessages  ${message.sender == userEmail && 'timeChatAreaMessageMy'} ${message.sender != userEmail && 'timeChatAreaMessageReceiver'}`;
+            bubbleTime.className=`chatAreaMessages  ${message.sender == userEmail && 'timeChatAreaMessageMy'} ${message.sender != userEmail && 'timeChatAreaMessageReceiver'} ${message.sender == 'Team' && 'team'}`;
             bubbleTime.innerText=`${date} ${monthA[monthD]}  ${timeH}:${timeM}`;
             chatAreaBody.appendChild(bubbleTime);
 

@@ -47,6 +47,7 @@ export default function Profile () {
   const db = fire.firestore ();
   const [userName, setUserName] = useState ('');
   const [userEmail, setUserEmail] = useState ('');
+  const [userPhone,setUserPhone]=useState('');
   const [avatar,setAvatar]=useState('None');
 
   const handleAvatar1=()=>{
@@ -55,9 +56,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar1
 
         })
@@ -74,9 +73,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar2
 
         })
@@ -93,9 +90,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar3
 
         })
@@ -112,9 +107,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar4
 
         })
@@ -131,9 +124,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar5
 
         })
@@ -150,9 +141,7 @@ export default function Profile () {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
-        .set({
-          name:userName,
-          email:userEmail,
+        .update({
           avatar:avatar6
 
         })
@@ -174,10 +163,12 @@ export default function Profile () {
         if (doc.exists) {
           var UserName = doc.data ().name;
           var avatarName=doc.data().avatar;
+          var userPhone=doc.data().phoneNumber;
           console.log ('USERNAME', UserName);
           setUserName (UserName);
           setUserEmail (ls);
-          setAvatar(avatarName)
+          setAvatar(avatarName);
+          setUserPhone(userPhone);
         } else {
           console.log ('No such Document found');
         }
@@ -326,6 +317,7 @@ export default function Profile () {
                     fullwidth
                     multiline="true"
                     placeholder="Enter the Mobile Number"
+                    value={userPhone}
                   />
                 </div>
 
