@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {InfoRounded, Settings} from '@material-ui/icons';
+import {InfoRounded, Settings, SignalWifi1BarLock} from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -75,40 +75,55 @@ export default function AboutUs () {
                   <p>
                   Hey there! We are so glad to see you :)
 We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go! 
-
-
-                  </p>
+                </p>
+                
+                
+                <br/>
+                <h3>MEET US!</h3>
                 </font>
-                <div className="Pics">
-            <img src={abhay} alt="abhay's"
-           style={{
-            height: '150px',
-            width: '150px',
+            <div className="Pics">
+              <img src={abhay} alt="abhay's"
+            style={{
+            height: '70px',
+            width: '70px',
             borderRadius: '50%',
-            border: '1px solid black',
+            padding:"10px",
+            border:'1 px solid black',
           }}
            />
-            <img src={Maitri} alt="abhay's pic"
+          
+           
+  
+            <img src={Maitri} alt="Maitri's pic"
              style={{
-              height: '150px',
-              width: '150px',
+              height: '70px',
+              width: '70px',
+              padding:'10px',
               borderRadius: '50%',
-              border: '1px solid black',
             }}/>
-            <img src={Asa} alt="abhay's pic"
+            
+            
+            <img src={Asa} alt="Asavari's pic"
              style={{
-              height: '150px',
-              width: '150px',
+              height: '70px',
+              width: '70px',
+              padding:'10px',
               borderRadius: '50%',
-              border: '1px solid black',
             }}/>
-            <img src={Ruchika} alt="abhay's pic"
+            <img src={Ruchika} alt="Ruchika's pic"
              style={{
-              height: '150px',
-              width: '150px',
+              height: '70px',
+              width: '70px',
+              padding:'10px',
               borderRadius: '50%',
-              border: '1px solid black',
+              
             }}/>
+            <div className="Names">
+            <h5>1)Abhay Ubhale</h5>
+            <h5>2)Maitri Amin</h5>
+            <h5>3)Asavari Ambavane</h5>
+            <h5>4)Ruchika Wadhwa</h5>
+            </div>
             </div>
               </div>
               <div className="Features">
@@ -116,23 +131,23 @@ We are a team of self learned passionate developers who aspire to perk up ordina
                   <h3>Our key features include-</h3>
                   <h4><b>Chatting with your friends.</b></h4>
                   <p>
-                    Make the best of your time here with us with our beautiful UI and flawless user experience.
+                    Make the best of your time here with us with our beautiful UI and flawless user experience.Fast messaging on both website and app simmultaneously never looked so easy!Join us to streamline all your conversations and much more coming soon.
                     {' '}
                   </p>
                   <h4><b>To-Do list</b></h4>
                   <p>
-                    Tick off your
-                    {' '}
-                    <b>editable</b>
-                    {' '}
-                    ToDo list and make progress on your projects,assignments or any other tasks. Delete and edit them as you like it!</p>
+                    Tick off your editable ToDo list and make progress on your projects,assignments or any other tasks. Delete and edit them as you like it!Boost your prodictivity and organize your tasks in one place with 'Baatein'!</p>
                   <br />
                   <h3>How do we aspire to grow?</h3>
                   <p>
-                    Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
+                    Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.Scheduling messages will also be a part of the future development process.Stay tuned!
                   </p>
                 </font>
               </div>
+              
+                
+              
+              
 
               {
                 }

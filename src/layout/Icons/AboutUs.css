@@ -15,7 +15,6 @@
   padding: 10px;;
 }
 .Pics{
-  padding:30px;
   justify-content: space-evenly;
   height: '100px';
   width: '100px';
@@ -24,4 +23,8 @@
   margin-top: '10px';
 
   
+}
+.Names{
+  font-family: 'Montserrat', sans-serif;
+  color: #0c2637;
 }
