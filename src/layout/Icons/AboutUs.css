@@ -15,14 +15,16 @@
   padding: 10px;;
 }
 .Pics{
-  padding:30px;
   justify-content: space-evenly;
-  
-    height: '100px';
-              width: '100px';
-              border-radius: "50%";
-              border: '1px solid black';
-              margin-top: '10px';
+  height: '100px';
+  width: '100px';
+  border-radius: "50%";
+  border: '1px solid black';
+  margin-top: '10px';
 
   
+}
+.Names{
+  font-family: 'Montserrat', sans-serif;
+  color: #0c2637;
 }

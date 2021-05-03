@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {InfoRounded, Settings} from '@material-ui/icons';
+import {InfoRounded, Settings, SignalWifi1BarLock} from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -14,13 +14,6 @@ import './AboutUs.css';
 import fire from '../../helper/db';
 import {Avatar} from '@material-ui/core';
 
-import None from '../../avatar/None.jpg';
-import avatar1 from '../../avatar/avatar1.jpg';
-import avatar2 from '../../avatar/avatar2.jpg';
-import avatar3 from '../../avatar/avatar3.jpg';
-import avatar4 from '../../avatar/avatar4.jpg';
-import avatar5 from '../../avatar/avatar5.jpg';
-import avatar6 from '../../avatar/avatar6.jpg';
 import abhay from '../Icons/abhay.jpeg';
 import Maitri from '../Icons/Maitri.jpeg';
 import Asa from '../Icons/Asa.jpeg';
@@ -54,142 +47,7 @@ export default function AboutUs () {
   const [userEmail, setUserEmail] = useState ('');
   const [avatar, setAvatar] = useState ('None');
 
-  const handleAvatar1 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar1,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar2 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar2,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar3 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar3,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar4 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar4,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar5 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar5,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  const handleAvatar6 = () => {
-    console.log ('Clicked');
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db
-        .collection ('Users')
-        .doc (ls)
-        .set ({
-          name: userName,
-          email: userEmail,
-          avatar: avatar6,
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-      console.log ('Clicked completed');
-    }
-  };
-
-  if (localStorage.getItem ('user') !== null) {
-    const ls = JSON.parse (localStorage.getItem ('user')).email;
-    db
-      .collection ('Users')
-      .doc (ls)
-      .get ()
-      .then (function (doc) {
-        if (doc.exists) {
-          var UserName = doc.data ().name;
-          var avatarName = doc.data ().avatar;
-          console.log ('USERNAME', UserName);
-          setUserName (UserName);
-          setUserEmail (ls);
-          setAvatar (avatarName);
-        } else {
-          console.log ('No such Document found');
-        }
-      })
-      .catch (function (error) {
-        console.log ('Error getting document: ', error);
-      });
-  }
+  
 
   return (
     <div>
@@ -217,15 +75,55 @@ export default function AboutUs () {
                   <p>
                   Hey there! We are so glad to see you :)
 We are a team of self learned passionate developers who aspire to perk up ordinary apps and websites and revamp our users’ life!  As our name goes, we are here to have some ‘Baatein’ with you. Unlike other tangible chat applications available, ‘Baatein'’ not only brings about communication but also has a lot more in store. It is available on android devices as well as on the web, so you can find and access it whether you are on your desk or on the go! 
-
-
-                  </p>
+                </p>
+                
+                
+                <br/>
+                <h3>MEET US!</h3>
                 </font>
-                <div className="Pics">
-            <img src={abhay} alt="abhay's" />
-            <img src={Maitri} alt="abhay's pic"/>
-            <img src={Asa} alt="abhay's pic"/>
-            <img src={Ruchika} alt="abhay's pic"/>
+            <div className="Pics">
+              <img src={abhay} alt="abhay's"
+            style={{
+            height: '70px',
+            width: '70px',
+            borderRadius: '50%',
+            padding:"10px",
+            border:'1 px solid black',
+          }}
+           />
+          
+           
+  
+            <img src={Maitri} alt="Maitri's pic"
+             style={{
+              height: '70px',
+              width: '70px',
+              padding:'10px',
+              borderRadius: '50%',
+            }}/>
+            
+            
+            <img src={Asa} alt="Asavari's pic"
+             style={{
+              height: '70px',
+              width: '70px',
+              padding:'10px',
+              borderRadius: '50%',
+            }}/>
+            <img src={Ruchika} alt="Ruchika's pic"
+             style={{
+              height: '70px',
+              width: '70px',
+              padding:'10px',
+              borderRadius: '50%',
+              
+            }}/>
+            <div className="Names">
+            <h5>1)Abhay Ubhale</h5>
+            <h5>2)Maitri Amin</h5>
+            <h5>3)Asavari Ambavane</h5>
+            <h5>4)Ruchika Wadhwa</h5>
+            </div>
             </div>
               </div>
               <div className="Features">
@@ -233,23 +131,23 @@ We are a team of self learned passionate developers who aspire to perk up ordina
                   <h3>Our key features include-</h3>
                   <h4><b>Chatting with your friends.</b></h4>
                   <p>
-                    Make the best of your time here with us with our beautiful UI and flawless user experience.
+                    Make the best of your time here with us with our beautiful UI and flawless user experience.Fast messaging on both website and app simmultaneously never looked so easy!Join us to streamline all your conversations and much more coming soon.
                     {' '}
                   </p>
                   <h4><b>To-Do list</b></h4>
                   <p>
-                    Tick off your
-                    {' '}
-                    <b>editable</b>
-                    {' '}
-                    ToDo list and make progress on your projects,assignments or any other tasks. Delete and edit them as you like it!</p>
+                    Tick off your editable ToDo list and make progress on your projects,assignments or any other tasks. Delete and edit them as you like it!Boost your prodictivity and organize your tasks in one place with 'Baatein'!</p>
                   <br />
                   <h3>How do we aspire to grow?</h3>
                   <p>
-                    Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.
+                    Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement group additional features like chats, peer to peer audio and video calling etc.Scheduling messages will also be a part of the future development process.Stay tuned!
                   </p>
                 </font>
               </div>
+              
+                
+              
+              
 
               {
                 }
