@@ -65,6 +65,8 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
                 .doc (email)
                 .set ({
                     name: contact,
+                    email: email,
+                    photo_url:"noprofile.png",
                 });
 
             db.collection ('Users')
@@ -73,6 +75,8 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
                 .doc (userEmail)
                 .set ({
                     name: userName,
+                    email: userEmail,
+                    photo_url:"noprofile.png",
                 });
             db.collection ('Users')
                 .doc (userEmail)

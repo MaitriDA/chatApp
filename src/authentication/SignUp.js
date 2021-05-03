@@ -27,7 +27,7 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [avatar, setAvatar] = useState(None);
+    const [avatar, setAvatar] = useState('noprofile.png');
     const [nameErr, setNameErr] = useState(false);
     const [pwdError, setPwdError] = useState(false);
 
@@ -62,8 +62,8 @@ const SignUp = (props) => {
                         .set({
                             name:name,
                             email:email,
-                            avatar:None,
-                            phoneNumber:phoneNumber
+                            photo_url:avatar,
+                            phone:phoneNumber
                         })
                     db.collection('Users')
                     .doc('allusers')

@@ -64,9 +64,12 @@
   margin-bottom: -20px;
 }
 .customImage{
-  
-  margin-bottom: -20px;
   display: inline;
-  
   margin: auto;
+  margin-bottom: 10px;
+  margin-top: -20px;
+}
+.profileSubValue{
+  color: black;
+  font-size: 18px;
 }

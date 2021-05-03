@@ -163,7 +163,7 @@ export default function Profile () {
         if (doc.exists) {
           var UserName = doc.data ().name;
           var avatarName=doc.data().avatar;
-          var userPhone=doc.data().phoneNumber;
+          var userPhone=doc.data().phone;
           console.log ('USERNAME', UserName);
           setUserName (UserName);
           setUserEmail (ls);
@@ -267,58 +267,38 @@ export default function Profile () {
                   </div>
                 </div>
                 <div className="customImage">
-                  <Button onClick={handleClose} className={classes.submit}>
-                    Custom image
+                  <Button onClick={handleClose}>
+                    Remove Image
                   </Button>
                 </div>
               </div>
               <div className="information">
                 <div className="profileInput">
                   <div className="profileHeading">My Profile</div>
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="User Name"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the User Name"
-                    value={userName}
-                  />
                 </div>
                 <div className="profileInput">
-
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="Email"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the email"
-                    value={userEmail}
-                  />
+                  <div className="profileSubTitle">
+                    UserName
+                  </div>
+                  <div className="profileSubValue">
+                    {userName}
+                  </div>
                 </div>
                 <div className="profileInput">
-
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="About Me"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the Bio"
-                  />
+                  <div className="profileSubTitle">
+                    Email
+                  </div>
+                  <div className="profileSubValue">
+                    {userEmail}
+                  </div>
                 </div>
                 <div className="profileInput">
-
-                  <TextField
-                    id="filled-margin-normal"
-                    style={{width: 270}}
-                    label="Contact Number"
-                    fullwidth
-                    multiline="true"
-                    placeholder="Enter the Mobile Number"
-                    value={userPhone}
-                  />
+                  <div className="profileSubTitle">
+                    Phone
+                  </div>
+                  <div className="profileSubValue">
+                    {userPhone}
+                  </div>
                 </div>
 
                   <div className="profileButton">
