@@ -1,5 +1,3 @@
-import { Avatar } from '@material-ui/core';
-import { DomainDisabled, InsertEmoticon } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import './ChatArea.css';
@@ -7,14 +5,6 @@ import fire from '../../helper/db';
 import Button from '@material-ui/core/Button';
 import ImageIcon from '@material-ui/icons/Image';
 import SendIcon from '@material-ui/icons/Send';
-
-import None from '../../avatar/None.jpg';
-import avatar1 from '../../avatar/avatar1.jpg';
-import avatar2 from '../../avatar/avatar2.jpg';
-import avatar3 from '../../avatar/avatar3.jpg';
-import avatar4 from '../../avatar/avatar4.jpg';
-import avatar5 from '../../avatar/avatar5.jpg';
-import avatar6 from '../../avatar/avatar6.jpg';
 import firebase from 'firebase/app';
 
 function ChatArea() {
@@ -24,7 +14,6 @@ function ChatArea() {
     const [messages, setMessages] = useState([]);
     const db = fire.firestore();
     const [useremail,setUserEmail]=useState("");
-    const [avatar, setAvatar] = useState (None);
     const userEmail = JSON.parse(localStorage.getItem("user")).email;
     useEffect(async () => {
         // if (localStorage.getItem('user') !== null) {
@@ -39,15 +28,6 @@ function ChatArea() {
                         setContactName(snapshot.data().name)
                     ));
                 db.collection('Users')
-                    .doc(contactEmail)
-                    .get()
-                    .then(function(doc){
-                      if(doc.exists){
-                        var avatarName=doc.data().avatar;
-                        setAvatar(avatarName);
-                      }
-                    })
-                db.collection('Users')
                     .doc(userEmail)
                     .collection('Chats')
                     .doc(contactEmail)
@@ -55,15 +35,9 @@ function ChatArea() {
                         createMessagesBubble(snapshot)
                     ))
             }
-        // }
-
-        // else {
-        //     console.log('chat area error')
-        // }
     }, [contactEmail])
     const sendMessage = async (e) => {
         e.preventDefault();
-        console.log('You typed>>', input);
         if (localStorage.getItem('user') !== null) {
             const userEmail = JSON.parse(localStorage.getItem("user")).email;
             setUserEmail(userEmail);
@@ -102,7 +76,6 @@ function ChatArea() {
         else {
             console.log('chat area error');
         }
-        console.log(contactEmail);
     }
     
     const createMessagesBubble = (snapshot) => {
@@ -133,7 +106,6 @@ function ChatArea() {
         <div className="mainChatArea">
             <div className="chatAreaHeader">
                 <div className="chatAreaContactName">
-                    <Avatar src={avatar}/>
                     <div className="chatName">
                         <div classNmae="chatAreaInfo">{contactName}</div>
                     </div>

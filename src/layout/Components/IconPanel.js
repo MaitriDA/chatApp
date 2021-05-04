@@ -38,7 +38,7 @@ const IconPanel=(props)=>{
                 <MobileScreenShareIcon style={{fontSize:35,color:"white"}}/>
               </Button>
             </LightTooltip>
-            <ScheduleMessage/>
+            {/* <ScheduleMessage/> */}
             <AboutUs/>
             
         </div>

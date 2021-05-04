@@ -1,28 +1,26 @@
 import {Avatar} from '@material-ui/core';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './MyContacts.css';
 import fire from '../../helper/db';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
-import Divider from '@material-ui/core/Divider';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import firebase from 'firebase/app';
+import None from '../../avatar/None.jpg';
 import avatar1 from '../../avatar/avatar1.jpg';
 import avatar2 from '../../avatar/avatar2.jpg';
 import avatar3 from '../../avatar/avatar3.jpg';
 import avatar4 from '../../avatar/avatar4.jpg';
 import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
-import {KitchenTwoTone} from '@material-ui/icons';
-import {set} from 'shelljs';
 
-function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewContact}) {
+function MyContacts({key, id, name, photo_url, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewContact}) {
   const db = fire.firestore ();
   const history = useHistory ();
   const [demo, setDemo] = useState ([]);
   const [email,setEmail]=useState('');
   const [userName, setUserName] = useState ('');
-  const [avatar, setAvatar] = useState (avatar1);
+  const [avatar, setAvatar] = useState (None);
 
   const handleAvatar=(id)=>{
     db.collection('Users')
@@ -30,12 +28,30 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
     .get()
     .then(function(doc){
       if(doc.exists){
-        var avatarName=doc.data().avatar;
-        setAvatar(avatarName);
+        if(photo_url=='avatar1.jpg'){
+          setAvatar(avatar1)
+        }
+        else if(photo_url=='avatar2.jpg'){
+          setAvatar(avatar2)
+        }
+        else if(photo_url=='avatar3.jpg'){
+          setAvatar(avatar3)
+        }
+        else if(photo_url=='avatar4.jpg'){
+          setAvatar(avatar4)
+        }
+        else if(photo_url=='avatar5.jpg'){
+          setAvatar(avatar5)
+        }
+        else if(photo_url=='avatar6.jpg'){
+          setAvatar(avatar6)
+        }
+        else{
+          setAvatar(None)
+        }
       }
     })
   }
-  console.log(userName)
   const createContact = () => {
     
     db.collection ('Users')
@@ -129,21 +145,13 @@ function MyContacts({key, id, name, lastmsg,lastmsgTimeH,lastmsgTimeM,addNewCont
     };
 
     const search = (email, contact) => {
-        console.log ('Yes');
-        console.log (demo);
-        console.log (demo.length);
         var i;
         for (i = 0; i < demo.length; i++) {
             if (demo[i] == contact) {
-            console.log ('Yes');
-            return 'Yes';
+              return 'Yes';
         }
         }
     };
-{/* <div>
-  {`${text.substring(0, MAX_LENGTH)}...`}<a href="#">Read more</a>
-</div> */}
-
   return !addNewContact
     ? <Router>
         <div

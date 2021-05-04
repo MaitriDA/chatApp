@@ -1,13 +1,6 @@
 import React from 'react';
-import {AppBar,Toolbar,IconButton,Typography,MenuItem,makeStyles} from '@material-ui/core';
-import {AccountCircle} from '@material-ui/icons';
 import fire from '../../helper/db';
-import { render } from '@testing-library/react';
 import './Header.css';
-import Login from '../../authentication/LoginIn';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
-import {Avatar} from '@material-ui/core';
 import Logo from '../../images/logo.jpeg';
 
 const Header=(props)=>{

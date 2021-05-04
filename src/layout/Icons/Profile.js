@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import {withStyles, Theme, makeStyles} from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -22,7 +20,6 @@ import avatar5 from '../../avatar/avatar5.jpg';
 import avatar6 from '../../avatar/avatar6.jpg';
 
 export default function Profile () {
-  const avatarLst=['None','avatar1']
   const [open, setOpen] = React.useState (false);
   const classes = useStyles();
 
@@ -49,43 +46,89 @@ export default function Profile () {
   const [userEmail, setUserEmail] = useState ('');
   const [userPhone,setUserPhone]=useState('');
   const [avatar,setAvatar]=useState('noprofile.png');
+  const [avatarHere,setAvatarHere]=useState(None)
+
+  if (localStorage.getItem ('user') !== null) {
+    const ls = JSON.parse (localStorage.getItem ('user')).email;
+    db
+      .collection ('Users')
+      .doc (ls)
+      .get ()
+      .then (function (doc) {
+        if (doc.exists) {
+          var UserName = doc.data ().name;
+          var avatarName=doc.data().avatar;
+          var userPhone=doc.data().phone;
+          var photo_url=doc.data().photo_url;
+          setUserName (UserName);
+          setUserEmail (ls);
+          setUserPhone(userPhone);
+          if(photo_url=='avatar1.jpg'){
+            setAvatarHere(avatar1)
+          }
+          else if(photo_url=='avatar2.jpg'){
+            setAvatarHere(avatar2)
+          }
+          else if(photo_url=='avatar3.jpg'){
+            setAvatarHere(avatar3)
+          }
+          else if(photo_url=='avatar4.jpg'){
+            setAvatarHere(avatar4)
+          }
+          else if(photo_url=='avatar5.jpg'){
+            setAvatarHere(avatar5)
+          }
+          else if(photo_url=='avatar6.jpg'){
+            setAvatarHere(avatar6)
+          }
+          else if(photo_url=='noprofile.png'){
+            setAvatarHere(None)
+          }
+        } else {
+          console.log ('No such Document found');
+        }
+      })
+      .catch (function (error) {
+        console.log ('Error getting document: ', error);
+      });
+  }
+
 
   const handleAvatar1=()=>{
-    console.log('Clicked')
     setAvatar('avatar1.jpg')
+    setAvatarHere(avatar1)
   }
 
   const handleAvatar2=()=>{
-    console.log('Clicked')
     setAvatar('avatar2.jpg')
+    setAvatarHere(avatar2)
     
   }
 
   const handleAvatar3=()=>{
-    console.log('Clicked')
     setAvatar('avatar3.jpg')
-    
+    setAvatarHere(avatar3)
   }
 
   const handleAvatar4=()=>{
-    console.log('Clicked')
     setAvatar('avatar4.jpg')
+    setAvatarHere(avatar4)
   }
 
   const handleAvatar5=()=>{
-    console.log('Clicked')
     setAvatar('avatar5.jpg')
+    setAvatarHere(avatar5)
   }
 
   const handleAvatar6=()=>{
-    console.log('Clicked')
     setAvatar('avatar6.jpg')
+    setAvatarHere(avatar6)
   }
 
   const handleNoProfile=()=>{
     setAvatar('noprofile.png')
+    setAvatarHere(None)
   }
-  console.log(avatar)
 
   const handleDone=()=>{
     if (localStorage.getItem ('user') !== null) {
@@ -105,8 +148,6 @@ export default function Profile () {
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                console.log(doc.data())
-                console.log(doc.data().photo_url);
                 db.collection('Users')
                 .doc(doc.id)
                 .collection('Chats')
@@ -119,35 +160,12 @@ export default function Profile () {
         .catch(function(error) {
             console.log("Error getting documents: ", error);
         });
-        console.log('Clicked completed');
     }
     setOpen (false);
   }
 
 
-  if (localStorage.getItem ('user') !== null) {
-    const ls = JSON.parse (localStorage.getItem ('user')).email;
-    db
-      .collection ('Users')
-      .doc (ls)
-      .get ()
-      .then (function (doc) {
-        if (doc.exists) {
-          var UserName = doc.data ().name;
-          var avatarName=doc.data().avatar;
-          var userPhone=doc.data().phone;
-          console.log ('USERNAME', UserName);
-          setUserName (UserName);
-          setUserEmail (ls);
-          setUserPhone(userPhone);
-        } else {
-          console.log ('No such Document found');
-        }
-      })
-      .catch (function (error) {
-        console.log ('Error getting document: ', error);
-      });
-  }
+  
   return (
     <div>
       <LightTooltip title="My Profile" placement="right">
@@ -169,7 +187,7 @@ export default function Profile () {
 
             <div className="profileMain">
               <div className="profilePicture">
-                <img src={avatar} className="picture"/>
+                <img src={avatarHere} className="picture"/>
                 <div className="avatar">
                   <div className="avatarHeading">AVATAR</div>
                   <div className="changedp">

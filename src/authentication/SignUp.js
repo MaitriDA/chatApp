@@ -146,7 +146,6 @@ const SignUp = (props) => {
                                     errorMessages={['this field is required']}
                                     autoComplete="off"
                                 />
-                                {nameErr && <p>Your name is invalid</p>}
                                 <TextValidator
                                 className={classes.textField}
                                     variant="outlined"
