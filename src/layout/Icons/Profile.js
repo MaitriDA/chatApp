@@ -48,108 +48,80 @@ export default function Profile () {
   const [userName, setUserName] = useState ('');
   const [userEmail, setUserEmail] = useState ('');
   const [userPhone,setUserPhone]=useState('');
-  const [avatar,setAvatar]=useState('None');
+  const [avatar,setAvatar]=useState('noprofile.png');
 
   const handleAvatar1=()=>{
     console.log('Clicked')
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db.collection ('Users')
-        .doc (ls)
-        .update({
-          avatar:avatar1
-
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-        console.log('Clicked completed');
-    }
+    setAvatar('avatar1.jpg')
   }
 
   const handleAvatar2=()=>{
     console.log('Clicked')
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db.collection ('Users')
-        .doc (ls)
-        .update({
-          avatar:avatar2
-
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-        console.log('Clicked completed');
-    }
+    setAvatar('avatar2.jpg')
+    
   }
 
   const handleAvatar3=()=>{
     console.log('Clicked')
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db.collection ('Users')
-        .doc (ls)
-        .update({
-          avatar:avatar3
-
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-        console.log('Clicked completed');
-    }
+    setAvatar('avatar3.jpg')
+    
   }
 
   const handleAvatar4=()=>{
     console.log('Clicked')
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db.collection ('Users')
-        .doc (ls)
-        .update({
-          avatar:avatar4
-
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-        console.log('Clicked completed');
-    }
+    setAvatar('avatar4.jpg')
   }
 
   const handleAvatar5=()=>{
     console.log('Clicked')
-    if (localStorage.getItem ('user') !== null) {
-      const ls = JSON.parse (localStorage.getItem ('user')).email;
-      db.collection ('Users')
-        .doc (ls)
-        .update({
-          avatar:avatar5
-
-        })
-        .catch (function (error) {
-          console.log ('Error getting document: ', error);
-        });
-        console.log('Clicked completed');
-    }
+    setAvatar('avatar5.jpg')
   }
 
   const handleAvatar6=()=>{
     console.log('Clicked')
+    setAvatar('avatar6.jpg')
+  }
+
+  const handleNoProfile=()=>{
+    setAvatar('noprofile.png')
+  }
+  console.log(avatar)
+
+  const handleDone=()=>{
     if (localStorage.getItem ('user') !== null) {
       const ls = JSON.parse (localStorage.getItem ('user')).email;
       db.collection ('Users')
         .doc (ls)
         .update({
-          avatar:avatar6
+          photo_url:avatar
 
         })
         .catch (function (error) {
           console.log ('Error getting document: ', error);
         });
+        db.collection("Users")
+        .doc(ls)
+        .collection('Chats')
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                console.log(doc.data())
+                console.log(doc.data().photo_url);
+                db.collection('Users')
+                .doc(doc.id)
+                .collection('Chats')
+                .doc(ls)
+                .update({
+                  photo_url:avatar
+                })
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
         console.log('Clicked completed');
     }
+    setOpen (false);
   }
 
 
@@ -167,7 +139,6 @@ export default function Profile () {
           console.log ('USERNAME', UserName);
           setUserName (UserName);
           setUserEmail (ls);
-          setAvatar(avatarName);
           setUserPhone(userPhone);
         } else {
           console.log ('No such Document found');
@@ -177,8 +148,6 @@ export default function Profile () {
         console.log ('Error getting document: ', error);
       });
   }
-
-
   return (
     <div>
       <LightTooltip title="My Profile" placement="right">
@@ -267,7 +236,7 @@ export default function Profile () {
                   </div>
                 </div>
                 <div className="customImage">
-                  <Button onClick={handleClose}>
+                  <Button onClick={handleNoProfile}>
                     Remove Image
                   </Button>
                 </div>
@@ -311,7 +280,7 @@ export default function Profile () {
                           </Button>
                         </div>
                         <div className="doneButton">
-                          <Button onClick={handleClose} className={classes.submit}>
+                          <Button onClick={handleDone} className={classes.submit}>
                             Done
                           </Button>
                         </div>
