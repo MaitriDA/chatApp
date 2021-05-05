@@ -18,6 +18,16 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
     const classes = useStyles();
     const [checked, setChecked] = React.useState(completed);
     const [open, setOpen] = React.useState (false);
+    const [toDoTitle, setToDoTitle] = useState("");
+    const [toDoDescription, setToDoDescription] = useState("");
+
+    var month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+    var TimeHour=new Date(time*1000).getHours()
+    var TimeMinute=new Date(time*1000).getMinutes()
+    var TimeMonth=month[new Date(time*1000).getMonth()]
+    var TimeDate=new Date(time*1000).getDate()
+
     const handleChange = (event) => {
         setChecked(true);
         const userEmail = JSON.parse (localStorage.getItem ('user')).email;
@@ -38,13 +48,54 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
       };
 
       const handleDone = () => {
+        const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+        if(toDoTitle==='' && toDoDescription===''){
+            
+                console.log('Yes')
+            
+            
+        }
+        else if(toDoTitle===''){
+            console.log('Yes')
+            db.collection('Users')
+            .doc(userEmail)
+            .collection('To-Do')
+            .doc(id)
+            .update({
+                task_description:toDoDescription,
+                task_time:new Date(),
+            })
+        }
+        else if(toDoDescription==''){
+            console.log('Yes')
+            db.collection('Users')
+            .doc(userEmail)
+            .collection('To-Do')
+            .doc(id)
+            .update({
+                task_title:toDoTitle,
+                task_time:new Date(),
+            })
+        }
+        else{
+            console.log('Yes')
+            db.collection('Users')
+            .doc(userEmail)
+            .collection('To-Do')
+            .doc(id)
+            .update({
+                task_description:toDoDescription,
+                task_title:toDoTitle,
+                task_time:new Date(),
+            })
+        }
         setOpen (false);
       };
     return(
     
             <div>
             
-                <button  className="btn" onClick={handleClickOpen}>
+                <div  className="btn">
                 <div className="checkbox">
                     <Checkbox
                         checked={checked}
@@ -54,7 +105,7 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                         name="checkedI"
                     />
                 </div>
-                <div className="content">
+                <div className="content"  onClick={handleClickOpen}>
                 <div className="todoComTitle">
                         {`${title.substring(0, 18)}`}
                     </div>
@@ -63,7 +114,7 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                         {`${description.substring(0, 25)}`}
                     </div>
                 </div>
-                </button>
+                </div>
                 <Dialog
         open={open}
         onClose={handleClose}
@@ -88,10 +139,10 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                             <div className="contectDes">{description}</div>
                         </div>
 
-                        {/* <div className="contentItem">
+                        <div className="contentItem">
                             <div className="contentHeading">Time: </div>
-                            <div className="contectDes">{time}</div>
-                        </div>  */}
+                            <div className="contectDes">{TimeDate} {TimeMonth} | {TimeHour}:{TimeMinute}</div>
+                        </div>  
                     </div>
 
                     <div className="Title">
@@ -99,7 +150,7 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                         id="standard-basic"
                         label=" NewTitle"
                         style={{width: 300}}
-                        // onChange={e => setToDoTitle(e.target.value)}
+                        onChange={e => setToDoTitle(e.target.value)}
                         type="text" 
                         placeholder="New Todo Title"
                       />
@@ -109,7 +160,7 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                         id="standard-basic"
                         label="New Description"
                         style={{width: 300}}
-                        // onChange={e => setToDoDescription(e.target.value)}
+                        onChange={e => setToDoDescription(e.target.value)}
                         type="text" 
                         placeholder="New Todo Description"
                       />
