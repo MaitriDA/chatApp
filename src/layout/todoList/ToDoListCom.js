@@ -10,13 +10,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './Todo.css';
-import { Description } from '@material-ui/icons';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const ToDoListCom = ({id,title,description,time,completed}) => {
     const db=fire.firestore();
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(completed);
+    const [checked, setChecked] = React.useState(false);
     const [open, setOpen] = React.useState (false);
     const [toDoTitle, setToDoTitle] = useState("");
     const [toDoDescription, setToDoDescription] = useState("");
@@ -39,6 +39,15 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
             task_completed:true
         })
       };
+      const handleDelete=()=>{
+        const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+        db.collection('Users')
+        .doc(userEmail)
+        .collection('To-Do')
+        .doc(id)
+        .delete()
+      }
+
       const handleClickOpen = () => {
         setOpen (true);
       };
@@ -91,6 +100,19 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
         }
         setOpen (false);
       };
+
+      
+      var strikeoff;
+      if(completed){
+          strikeoff=<div className="todoComTitle" style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>
+          {`${title.substring(0, 15)}`}
+      </div>
+      }
+      else{
+          strikeoff=<div className="todoComTitle">
+          {`${title.substring(0, 15)}`}
+      </div>
+      }
     return(
     
             <div>
@@ -106,13 +128,14 @@ const ToDoListCom = ({id,title,description,time,completed}) => {
                     />
                 </div>
                 <div className="content"  onClick={handleClickOpen}>
-                <div className="todoComTitle">
-                        {`${title.substring(0, 18)}`}
-                    </div>
+                {strikeoff}
                     <div className="todoComDis">
-                        {/* {completed ? "completed":"In progress"} */}
                         {`${description.substring(0, 25)}`}
                     </div>
+                </div>
+                <div className="delete" onClick={handleDelete}>
+                    
+                <DeleteIcon style={{fontSize: 20, color: 'gray'}}/>
                 </div>
                 </div>
                 <Dialog
