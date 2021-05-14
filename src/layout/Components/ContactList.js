@@ -1,4 +1,3 @@
-import { SearchOutlined } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import fire from '../../helper/db';
 import './ContactList.css';
@@ -38,7 +37,7 @@ const ContactList=(props)=>{
        <div className="mainContactList">
            <div className="contactListHeader">
                 <div className="contactListTitle">Chats</div>
-                <SearchOutlined style={{fontSize:30}}className="contactListSearchIcon"/>
+                
             </div>
             <div className="MyContact">
                 {Contacts.map(Contact=>(

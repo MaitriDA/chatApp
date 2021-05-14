@@ -68,6 +68,7 @@ const Login = (props) => {
                                     value={email}
                                     validators={['required', 'isEmail']}
                                     errorMessages={['this field is required', 'email is not valid']}
+                                    autoComplete='off'
                                 />
                                 <TextValidator
                                     className={classes.textField}
@@ -80,6 +81,8 @@ const Login = (props) => {
                                     value={password}
                                     validators={['required']}
                                     errorMessages={['this field is required']}
+                                    autoComplete='off'
+                                    type='password'
                                 />
                                 <br/>
                                 {loading ? (

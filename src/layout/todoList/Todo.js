@@ -27,7 +27,8 @@ const Todo = () => {
   };
 
   const handleDone = () => {
-    const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+    if(localStorage.getItem('user')!==null){
+      const userEmail = JSON.parse (localStorage.getItem ('user')).email;
     db.collection('Users')
     .doc(userEmail)
     .collection('To-Do')
@@ -37,6 +38,8 @@ const Todo = () => {
       task_completed:false,
       task_time:new Date(),
     })
+    }
+    
     setOpen (false);
   };
   
@@ -45,7 +48,8 @@ const Todo = () => {
   },[])
 
   function getTodos(){
-    const userEmail = JSON.parse (localStorage.getItem ('user')).email;
+    if(localStorage.getItem('user')!==null){
+      const userEmail = JSON.parse (localStorage.getItem ('user')).email;
     db.collection('Users')
       .doc(userEmail)
       .collection('To-Do')
@@ -59,6 +63,8 @@ const Todo = () => {
         })
       ))
     ))
+    }
+    
   }
   return (
     <div>

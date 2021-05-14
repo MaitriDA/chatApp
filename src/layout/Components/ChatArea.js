@@ -83,12 +83,14 @@ function ChatArea() {
         var chatAreaBody = document.getElementById("chatAreaBody");
         chatAreaBody.innerHTML = "";
         messages.chats.forEach(message => {
-            var bubble = document.createElement("p");
-            bubble.className = `chatAreaMessages  ${message.sender == userEmail && 'chatAreaMessageMy'} ${message.sender != userEmail && 'chatAreaMessageReceiver'} ${message.sender == 'Team' && 'team'}`;
+            var bubble = document.createElement("div");
+            bubble.className = `${message.sender == userEmail && 'chatAreaMessageMy chatAreaMessages'} ${message.sender != userEmail && message.sender!='Team' && 'chatAreaMessageReceiver chatAreaMessages'} ${message.sender == 'Team' && 'team'}`;
+            chatAreaBody.appendChild(bubble)
             bubble.innerText = message.message;
-            chatAreaBody.appendChild(bubble);
-            
-            const monthA=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            chatAreaBody.appendChild(bubble)
+
+            if(message.sender!='Team'){
+                const monthA=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
             var date=new Date(message.timestamp*1000).getDate();
             var monthD=new Date(message.timestamp*1000).getMonth();
             var timeH=new Date(message.timestamp*1000).getHours();
@@ -97,6 +99,8 @@ function ChatArea() {
             bubbleTime.className=`chatAreaMessages  ${message.sender == userEmail && 'timeChatAreaMessageMy'} ${message.sender != userEmail && 'timeChatAreaMessageReceiver'} ${message.sender == 'Team' && 'team'}`;
             bubbleTime.innerText=`${date} ${monthA[monthD]}  ${timeH}:${timeM}`;
             chatAreaBody.appendChild(bubbleTime);
+            }
+            
 
             setInput("");
         })
@@ -119,7 +123,7 @@ function ChatArea() {
                         <ImageIcon style={{ fontSize: 25, color: "#0c2637" }} />
                     </Button>
                     <form className="formSendMessage">
-                        <input
+                        <textarea
                             value={input}
                             onChange={e => setInput(e.target.value)}
                             type="text" placeholder="Send a Message..." className="sendMessage" />

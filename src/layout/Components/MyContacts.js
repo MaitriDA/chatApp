@@ -100,7 +100,7 @@ function MyContacts({key, id, name, photo_url, lastmsg,lastmsgTimeH,lastmsgTimeM
                 .doc (email)
                 .update ({
                     chats: firebase.firestore.FieldValue.arrayUnion ({
-                        message: 'Hello from baatein team',
+                        message: 'Hello from baatein team,',
                         sender: 'Team',
                         timestamp: new Date (),
                     }),
