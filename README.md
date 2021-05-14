@@ -15,7 +15,7 @@ Every user gets a personal space to save/store important messages, To-Dos etc. T
 ### 3) Avatars
 Avatars for users to give the app a fresher and millenial look and feel. Users can select from a range of avatars and that will be visible to his/her contacts. It can be changed at any time.
 
-##Future Scope
+## Future Scope
 Baatein may be the simplest of applications right now but we assure you a bright future of this application. We will be looking to implement additional features like group chats, peer to peer audio and video calling etc. Scheduling messages will also be a part of the future development process. Stay tuned! Other planned features are:
 
 ### 1) Birthday Reminder
