@@ -16,7 +16,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const ToDoListCom = ({id,title,description,time,completed}) => {
     const db=fire.firestore();
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(false);
+    const [checked, setChecked] = React.useState(completed);
     const [open, setOpen] = React.useState (false);
     const [toDoTitle, setToDoTitle] = useState("");
     const [toDoDescription, setToDoDescription] = useState("");
