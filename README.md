@@ -80,9 +80,7 @@ The users often get important links. Everyone cannot read links to get an idea o
 &nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="ToDo" src="https://drive.google.com/uc?export=view&id=13WvKCYwutCsLpRWhQCgu9FEh7DEP_22W" width="80%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="AboutUs" src="https://drive.google.com/uc?export=view&id=1OheFqBJJRYZiUg-JS-K0vWRfCFZfN35K" width="80%">
-</p>
-
+  
 ## Demo Videos
 
 ![web_video](https://drive.google.com/uc?export=view&id=1zvJh9cL--hbRXtZ4dsXPijB4cna-5rMH)
